@@ -1,35 +1,3 @@
-/*	
-		2014-05-26	Country Layer OK, Filter OK, Skrollr OK
-		2014-05-27	Navigation OK, Transitions OK, Tooltip OK
-		2014-05-28	Logos OK
-		2014-05-29	Info OK
-		2014-05-31	Navigation Jump OK, Mobile OK, Touch OK, Firefox OK
-		2014-06-01	Colors OK, Social Sharing OK
-		2014-06-13	Marker Collision, Page Loading OK, A Logo OK
-		2014-06-14	Design Tweaks
-		2014-06-15	Design Tweaks, Hash Navigation OK
-		2014-06-16	Navigation Jump Filter Fix
-
-
-		
-		Day/Night Border
-		Category-Top5
-		Vergleich mit letzten Jahren
-		Map Attribution, Tracking
-		Publish
-*/
-/*	Feature-Ideen:
-		* Markenvergleich
-		* Links zu Herstellerseiten, Wikipedia-Artikel
-		* Country Sidebar
-*/
-/*	Neue SVG Logos nötig von:
-		* chinalife
-		* mtn
-		* mts
-		* colgate
-*/
-
 /******************************************
 *		TOP 100 BRANDS												*
 *		Alexander Johmann, 2014								*
