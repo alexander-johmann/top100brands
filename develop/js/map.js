@@ -226,6 +226,7 @@ $(function() {
 	Pace.on('done', function() {
 		pageReady = true;
 		if (hash = (window.location.hash).substr(2)) {
+			target = $('#'+hash).text();
 			scroll.animateTo($('#'+hash).data('scroll'));
 		}
 	});
