@@ -97,7 +97,7 @@ a {
 	h2 {
 		width: 100%;
 		@include position(fixed, 50% none none none);
-		margin-top: 50px;
+		margin-top: 70px;
 		z-index: 2;
 		@include animation (fadein 3s ease-in-out);
 		color: rgba(255,255,255,.9);
@@ -108,6 +108,16 @@ a {
 		position: fixed;
 	}
 	
+}
+
+h1 span span:before {
+	content: '0';
+}
+.pace-running h1 span span:before {
+  content: attr(data-progress-text);
+}
+.pace-done h1 span span:before {
+	content: '100';
 }
 
 #down {
@@ -465,6 +475,11 @@ a {
 	padding-left: 3px;
 }
 
+.custom-map .leaflet-objects-pane g path {
+	stroke: #fff;
+	stroke-opacity: 0.1;
+}
+
 .sharing {
 	width: auto;
 	height: auto;
@@ -493,16 +508,6 @@ a {
 		margin-bottom: 12px;
 	}
 
-}
-
-h1 span span:before {
-	content: '0';
-}
-.pace-running h1 span span:before {
-  content: attr(data-progress-text);
-}
-.pace-done h1 span span:before {
-	content: '100';
 }
 
 @media all and (max-width: 768px) { /* PHONE & TABLET */

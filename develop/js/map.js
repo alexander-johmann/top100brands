@@ -126,12 +126,11 @@ $(function() {
 						'<div class="rank">' + layer.feature.properties.Rank + '.</div>' +
 					'</div>' +
 				'</div>';
-			//layer.bindPopup(content);
+			layer.bindPopup(content);
 		});
 
 		oms.addListener('mouseover', function(dataLayer) {
-			//console.log('mo');
-			//dataLayer.layer.openPopup();
+			dataLayer.layer.openPopup();
 		});
 
 		/*
@@ -142,11 +141,12 @@ $(function() {
 		});
 		*/
 
-		/* dataLayer.on('mouseover', function(e) {
+		dataLayer.on('mouseover', function(e) {
+			e.layer.openPopup();
 		});
-		/* dataLayer.on('mouseout', function(e) {
+		dataLayer.on('mouseout', function(e) {
 			e.layer.closePopup();
-		});*/
+		});
 	}
 
 	/** Filter **/
@@ -181,6 +181,7 @@ $(function() {
 					if (target && target == navItem.text()) target = false;
 					filterDone = false;
 					if (!boxDone[index]) {
+						$('svg.leaflet-zoom-animated path').css('stroke','transparent');
 						navElem.removeClass('active');
 						navItem.addClass('active');
 						filterDataLayer(navItem.text());

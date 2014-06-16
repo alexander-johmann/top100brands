@@ -32,6 +32,11 @@ module.exports = (grunt) ->
           style: "<%= grunt.config.get('sassOutputStyle') %>"
           loadPath: [require('node-bourbon').includePaths]
 
+    coffee:
+      compile:
+        files:
+          "<%= grunt.config.get('assetsDir') %>/js/compiled/oms.js": "<%= grunt.config.get('assetsDir') %>/js/oms.coffee"
+
     uglify:
       my_target:
         files:
@@ -41,7 +46,7 @@ module.exports = (grunt) ->
             "<%= grunt.config.get('assetsDir') %>/js/skrollr.menu.min.js",
             "<%= grunt.config.get('assetsDir') %>/js/pace.js",
             "<%= grunt.config.get('assetsDir') %>/js/geojson.top100brands.js",
-            "<%= grunt.config.get('assetsDir') %>/js/oms.js",
+            "<%= grunt.config.get('assetsDir') %>/js/compiled/oms.js",
             "<%= grunt.config.get('assetsDir') %>/js/map.js"
           ]
 
@@ -55,7 +60,7 @@ module.exports = (grunt) ->
 
     watch:
       scripts:
-        files: ["develop/**/*.{scss,css,js}"]
+        files: ["develop/**/*.{scss,css,js,coffee}"]
         tasks: ["default"]
         options:
           spawn: false
@@ -63,8 +68,9 @@ module.exports = (grunt) ->
   grunt.loadNpmTasks "grunt-contrib-sass"
   grunt.loadNpmTasks "grunt-config"
   grunt.loadNpmTasks "grunt-contrib-watch"
+  grunt.loadNpmTasks "grunt-contrib-coffee"
   grunt.loadNpmTasks "grunt-contrib-uglify"
   grunt.loadNpmTasks "grunt-newer"
   grunt.loadNpmTasks "grunt-notify"
 
-  grunt.registerTask "default", ["config:dev", "sass", "newer:uglify", "notify:server"]
+  grunt.registerTask "default", ["config:dev", "sass", "coffee", "newer:uglify", "notify:server"]

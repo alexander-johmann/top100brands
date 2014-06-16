@@ -11,7 +11,7 @@
 2014-06-13	Marker Collision, Page Loading, A Logo
 2014-06-14	Design Tweaks
 2014-06-15	Design Tweaks, Hash Navigation
-2014-06-16	Navigation Jump Filter Fix
+2014-06-16	Navigation Jump Filter Fix, Marker Collision, Design Tweaks
 
 # Planned Features
 -	Day/Night Border
