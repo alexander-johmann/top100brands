@@ -159,19 +159,8 @@ $(function() {
 		function setFilter () {
 			fadeout = false;
 			dataLayer.setFilter(function(feature) {
-				if (!filter || filter == 'false') {
-					console.log("FALSE!!!");
-					return false;
-				}
+				if (!filter || filter == 'false') return false;
 				if (filter == 'All') return true;
-				if (target && target != filter) {
-					console.log(target +"!="+ filter);
-					return false;
-				}
-				if (target && target == filter) {
-					console.log(target +"=="+ filter);
-					target = false;
-				}
 				return feature.properties.Category === filter;
 			});
 			tooltips();
@@ -180,17 +169,19 @@ $(function() {
 	filterDataLayer();
 
 	/** Scrolling **/
-	var box = $('#content section'), boxDone = [false,false,false,false,false,false,false,false,false], navElem = $('#nav li'), filterDone = false;
+	var box = $('#content section'), boxDone = [false,false,false,false,false,false,false,false,false,false,false], navElem = $('#nav li'), filterDone = false;
 	var scroll = skrollr.init({
 		forceHeight: true,
 		smoothScrolling: true,
 		render: function() {
 			box.each(function(index) {
 				if ($(this).hasClass('skrollable-between')) {
+					var navItem = $('#nav li:eq(' + index + ')');
+					if (target && target != navItem.text()) return;
+					if (target && target == navItem.text()) target = false;
 					filterDone = false;
 					if (!boxDone[index]) {
 						navElem.removeClass('active');
-						var navItem = $('#nav li:eq(' + index + ')');
 						navItem.addClass('active');
 						filterDataLayer(navItem.text());
 						boxDone[index] = true;
@@ -219,8 +210,9 @@ $(function() {
     easing: 'linear',
     scale: 1,
     duration: function(currentTop, targetTop) {
-    	if (currentTop > targetTop) return (currentTop-targetTop)/4;
-    	else return (targetTop-currentTop)/4;
+    	return 500;
+    	/* if (currentTop > targetTop) return (currentTop-targetTop)/4;
+    	else return (targetTop-currentTop)/4; */
     },
     handleLink: function(link) {
 			if (pageReady) {
