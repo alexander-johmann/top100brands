@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<title>Top 100 Brands</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta name="author" content="Alexander Johmann">
+	<meta name="description" content="The Top 100 Brands from “BrandZ 2014” on a map. A project by Alexander Johmann.">
+	<meta name="keywords" lang="en" content="">
+
+	<script type="text/javascript" src="//use.typekit.net/xjj0ofn.js"></script>
+	<script type="text/javascript">try{Typekit.load();}catch(e){}</script>
+
+	<script src='//api.tiles.mapbox.com/mapbox.js/v1.6.3/mapbox.js'></script>
+	<link href='//api.tiles.mapbox.com/mapbox.js/v1.6.3/mapbox.css' rel='stylesheet' />
+
+	<script src='public/js/app.js'></script>
+	<link rel="stylesheet" type="text/css" href="public/css/app.css" />
+</head>
+<body>
+	<script>(function(d, s, id) {
+	  var js, fjs = d.getElementsByTagName(s)[0];
+	  if (d.getElementById(id)) return;
+	  js = d.createElement(s); js.id = id;
+	  js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&appId=227763740715606&version=v2.0";
+	  fjs.parentNode.insertBefore(js, fjs);
+	}(document, 'script', 'facebook-jssdk'));</script>
+	<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+
+	<div id="ruler"></div>
+
+	<div id="sharingtop" class="sharing desktoptablet"
+		data-0-start="top:-30px;"
+		data-400-start="top:38px;"
+		data-4500-start="top:38px;"
+		data-4600-start="top:-30px;">
+
+		<div id="fb-root"></div>
+		<div class="fb-like" data-href="http://whateverworks.at/play/top100brands/" data-layout="button" data-action="like" data-show-faces="false" data-share="false"></div>
+		<span class="spacer"></span>
+		<a href="https://twitter.com/share" class="twitter-share-button" data-text="Map of the Top 100 Brands 2014" data-via="wwxat" data-count="none">Tweet</a>
+	</div>
+	<div id="sharingbottom" class="sharing"
+		data-4400-start="display:!none;"
+		data-4500-start="display:!block;">
+
+		<div class="fb-like" data-href="http://whateverworks.at/play/top100brands/" data-layout="button" data-action="like" data-show-faces="false" data-share="false"></div>
+		<span class="spacer"></span>
+		<a href="https://twitter.com/share" class="twitter-share-button" data-text="Map of the Top 100 Brands 2014" data-via="wwxat" data-count="none">Tweet</a>
+	</div>
+
+	<div id="map" class="dark custom-map"
+		data-4500-start="bottom:0%;"
+		data-4700-start="bottom:70%;"></div>
+		<!-- data-0-start="-webkit-filter:brightness(0.3);-moz-filter:brightness(0.3);-ms-filter:brightness(0.3);filter:brightness(0.3);"
+		data-400-start="-webkit-filter:brightness(1);-moz-filter:brightness(1);-ms-filter:brightness(1);filter:brightness(1);"
+		data-4500-start="bottom:0%;-webkit-filter:brightness(1);-moz-filter:brightness(1);-ms-filter:brightness(1);filter:brightness(1);"
+		data-4700-start="bottom:70%;-webkit-filter:brightness(0.5);-moz-filter:brightness(0.5);-ms-filter:brightness(0.5);filter:brightness(0.5);"></div> -->
+
+	<div id="curtain">
+		<div id="curtainleft"
+			data-0-start="width:50%"
+			data-400-start="width:0"></div>
+		<div id="curtainright"
+			data-0-start="width:50%"
+			data-400-start="width:0"></div>
+	</div>
+
+	<div id="content">
+
+		<h1 class="desktop"
+			data-0-start="transform:scale(1);-webkit-transform:scale(1);-moz-transform:scale(1);top:50%;margin-top:-80px;"
+			data-400-start="transform:scale(0.3);-webkit-transform:scale(0.3);-moz-transform:scale(0.3);top:0%;margin-top:0px;"
+			data-4500-start="transform:scale(0.3);-webkit-transform:scale(0.3);-moz-transform:scale(0.3);top:0%;margin-top:0px;"
+			data-4800-start="transform:scale(0.6);-webkit-transform:scale(0.6);-moz-transform:scale(0.6);top:10%;margin-top:-20px;"><span><a href="#/about" data-scroll="4800">Top <span></span> Brands</a></span></h1>
+		<h1 class="tablet"
+			data-0-start="transform:scale(1);-webkit-transform:scale(1);-moz-transform:scale(1);top:50%;margin-top:-80px;"
+			data-400-start="transform:scale(0.4);-webkit-transform:scale(0.4);-moz-transform:scale(0.4);top:0%;margin-top:10px;"
+			data-4500-start="transform:scale(0.4);-webkit-transform:scale(0.4);-moz-transform:scale(0.4);top:0%;margin-top:10px;"
+			data-4800-start="transform:scale(0.7);-webkit-transform:scale(0.7);-moz-transform:scale(0.7);top:10%;margin-top:0px;"><span><a href="#/about" data-scroll="4800">Top <span></span> Brands</a></span></h1>
+		<h1 class="phone"
+			data-0-start="transform:scale(1);-webkit-transform:scale(1);-moz-transform:scale(1);top:50%;margin-top:-80px;"
+			data-400-start="transform:scale(0.6);-webkit-transform:scale(0.6);-moz-transform:scale(0.6);top:0%;margin-top:20px;"
+			data-4500-start="transform:scale(0.6);-webkit-transform:scale(0.6);-moz-transform:scale(0.6);top:0%;margin-top:20px;"
+			data-4800-start="transform:scale(0.7);-webkit-transform:scale(0.7);-moz-transform:scale(0.7);top:10%;margin-top:0px;"><span><a href="#/about" data-scroll="4800">Top <span></span> Brands</a></span></h1>
+
+		<h2>The top brands from the “BrandZ 2014” ranking visualized on a map.</h2>
+
+		<div id="down" data-0-start="opacity:1;" data-100-start="opacity:0;">
+			<a href="#/all" data-scroll="500"><canvas width="100" height="40"></canvas></a>
+		</div>
+		<div id="up" data-4600-start="opacity:0;" data-4800-start="opacity:1;">
+			<a href="#/all" data-scroll="500"><canvas width="50" height="50"></canvas></a>
+		</div>
+
+		<section data-scroll="500" data-400-start="top:100%" data-800-start="top:-1%" data-menu-offset="0" id="all"></section>
+		<section data-scroll="900" data-800-start="top:100%" data-1200-start="top:-1%" data-menu-offset="0" id="technology"></section>
+		<section data-scroll="1300" data-1200-start="top:100%" data-1600-start="top:-1%" data-menu-offset="0" id="telecoms"></section>
+		<section data-scroll="1700" data-1600-start="top:100%" data-2000-start="top:-1%" data-menu-offset="0" id="retail"></section>
+		<section data-scroll="2100" data-2000-start="top:100%" data-2400-start="top:-1%" data-menu-offset="0" id="fast-food"></section>
+		<section data-scroll="2500" data-2400-start="top:100%" data-2800-start="top:-1%" data-menu-offset="0" id="soft-drinks"></section>
+		<section data-scroll="2900" data-2800-start="top:100%" data-3200-start="top:-1%" data-menu-offset="0" id="cars"></section>
+		<section data-scroll="3300" data-3200-start="top:100%" data-3600-start="top:-1%" data-menu-offset="0" id="global-banks"></section>
+		<section data-scroll="3700" data-3600-start="top:100%" data-4000-start="top:-1%" data-menu-offset="0" id="luxury"></section>
+		<section data-scroll="4100" data-4000-start="top:100%" data-4400-start="top:-1%" data-menu-offset="0" id="oil-gas"></section>
+		<section data-scroll="4800" data-4400-start="top:100%" data-4800-start="top:-1%" data-menu-offset="0" id="about"></section>
+
+		<div id="info">
+			<div>
+				<!-- <p class="intro">“Top 100 Brands” is a project by <a href="http://whateverworks.at">whateverworks</a>, a Vienna-based digital communications agency.</p> -->
+				<p class="intro">“Top 100 Brands” is a project by <a href="http://aj82.tumblr.com">Alexander Johmann</a>. The aim of this project was to play with some web technologies and find a different representation of the <a href="http://www.millwardbrown.com/brandz/2014/Top100/Docs/2014_BrandZ_Top100_Chart.pdf">BrandZ chart (PDF)</a>.</p>
+				<p>The map is a geographical representation of the <a href="http://www.millwardbrown.com/BrandZ/Top_100_Global_Brands/">”BrandZ 2014”</a> study by market research company <a href="http://www.millwardbrown.com">MillwardBrown</a> that determine the most valuable brands in the world each year. You can learn more on their website about the study and <a href="http://www.millwardbrown.com/BrandZ/Top_100_Global_Brands.aspx">download a chart and the report</a>.</p>
+				<p>On the map you can see where the most valuable brands have their headquarters. You can also see the clusters in North America, Western Europe and Southeast Asia. For some categories you can see which country or part of it is strong in various industries. The most valuable technology companies are located on the West and East Cost of the USA, all big fast food companies are from the USA, Germany and Japan have the most valuable brands in the car industry, Western Europe has the most valuable global banks and France and Italy are leading the luxury sector.</p>
+				<p>Used technologies:</p>
+				<ul>
+					<li><a href="http://www.mapbox.com">MapBox</a> for the map</li>
+					<li><a href="http://prinzhorn.github.io/skrollr/">Skrollr</a> for the page scrolling</li>
+				</ul>
+			</div>
+		</div>
+		<div id="logo"><a href="http://aj82.tumblr.com"><img src="images/a.png" alt="Logo" /></a></div>
+	</div>
+
+	<div id="nav"
+		data-bottom-top="bottom: -55px;"
+		data--150-bottom="bottom: 0px;"
+		data-4400-start="bottom: 0px;"
+		data-4600-start="bottom: -55px;">
+		<div id="navBar">
+			<ul>
+				<li id="n0"><a data-scroll="500" href="#/all">All</a></li>
+				<li id="n1"><a data-scroll="900" href="#/technology">Technology</a></li>
+				<li id="n2"><a data-scroll="1300" href="#/telecoms">Telecoms</a></li>
+				<li id="n3"><a data-scroll="1700" href="#/retail">Retail</a></li>
+				<li id="n4"><a data-scroll="2100" href="#/fast-food">Fast Food</a></li>
+				<li id="n5"><a data-scroll="2500" href="#/soft-drinks">Soft Drinks</a></li>
+				<li id="n6"><a data-scroll="2900" href="#/cars">Cars</a></li>
+				<li id="n7"><a data-scroll="3300" href="#/global-banks">Global Banks</a></li>
+				<li id="n8"><a data-scroll="3700" href="#/luxury">Luxury</a></li>
+				<li id="n9"><a data-scroll="4100" href="#/oil-gas">Oil and Gas</a></li>
+			</ul>
+		</div>
+		<div id="scrollPrev"><canvas width="35" height="55"></canvas></div>
+		<div id="scrollNext"><canvas width="35" height="55"></canvas></div>
+	</div>
+
+</body>
+</html>
