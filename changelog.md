@@ -13,14 +13,11 @@
 2014-06-15	Design Tweaks, Hash Navigation
 2014-06-16	Navigation Jump Filter Fix, Marker Collision, Design Tweaks
 
+
 # Planned Features
--	Day/Night Border
--	Category-Top5
 -	Vergleich mit letzten Jahren
+-	Category-Top5
 -	Map Attribution, Tracking
-- Publish
-- Markenvergleich
-- Links zu Herstellerseiten, Wikipedia-Artikel
 - Country Sidebar
 
 # ToDos
