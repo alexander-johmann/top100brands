@@ -12,6 +12,9 @@
 2014-06-14	Design Tweaks
 2014-06-15	Design Tweaks, Hash Navigation
 2014-06-16	Navigation Jump Filter Fix, Marker Collision, Design Tweaks
+2014-06-20	2013, 2012
+2014-06-23	2011, 2010
+2014-06-24	Logos
 
 
 # Planned Features
@@ -19,10 +22,3 @@
 -	Category-Top5
 -	Map Attribution, Tracking
 - Country Sidebar
-
-# ToDos
-- SVG Logos
--- chinalife
--- mtn
--- mts
--- colgate
