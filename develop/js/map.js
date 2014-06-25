@@ -5,6 +5,28 @@
 
 var map, dataLayer, countryLayer = [], fadeout = false;
 
+var charJSPersonalDefaultOptionsHorizontalBar = {
+	graphMin: 0,
+	barStrokeWidth: 0,
+	barValueSpacing: 0,
+	barDatasetSpacing: 1,
+	scaleShowGridLines: false,
+	scaleShowLine: false,
+	showYAxisMin: false,
+	xAxisBottom: false,
+	inGraphDataShow: true,
+	inGraphDataFontColor: '#FFF',
+	inGraphDataXPosition: 3,
+	inGraphDataPaddingX: -5,
+	inGraphDataAlign: 'right',
+	inGraphDataTmpl: 'M$ <%=v3%>',
+	inGraphDataFontFamily: 'inconsolata',
+	inGraphDataFontSize: 14,
+	scaleFontColor: '#666',
+	scaleFontFamily: 'inconsolata',
+	scaleFontSize: 14,
+};
+
 $(function() {
 
 	/** Debug **/
@@ -106,6 +128,7 @@ $(function() {
 	dataLayer.setGeoJSON(data);
 
 	/** Tooltips **/
+	var chartData = [];
 	function tooltips() {
 		dataLayer.eachLayer(function(layer) {
 			var content =
@@ -125,28 +148,34 @@ $(function() {
 						'<div class="headline">Rank \'14</div>' +
 						'<div class="rank">' + layer.feature.properties.Rank + '.</div>' +
 					'</div>' +
-				'</div>';
+				'</div>' +
+				'<canvas id="chart" width="200" height="120"></canvas';
 			layer.bindPopup(content);
+			chartData[layer.feature.properties.Rank] = {
+				labels: ['2010','2011','2012','2013','2014'],
+				datasets: [{
+					fillColor: 'rgba(0,0,0,0.2)',
+					strokeColor: 'rgba(0,0,0,0)',
+					data: [layer.feature.properties.Value2010,layer.feature.properties.Value2011,layer.feature.properties.Value2012,layer.feature.properties.Value2013,layer.feature.properties.Value]
+				}]
+			};
 		});
-
 		oms.addListener('mouseover', function(dataLayer) {
 			dataLayer.layer.openPopup();
 		});
-
-		/*
-		oms.addListener('click', function(marker) {
-		  popup.setContent(marker.desc);
-		  popup.setLatLng(marker.getLatLng());
-		  map.openPopup(popup);
-		});
-		*/
-
 		dataLayer.on('mouseover', function(e) {
 			e.layer.openPopup();
+			generateChart(e.layer.feature.properties.Rank);
 		});
 		dataLayer.on('mouseout', function(e) {
 			e.layer.closePopup();
 		});
+	}
+
+	/** Tooltip Charts **/
+	function generateChart(chart) {
+		var ctx = $('#chart').get(0).getContext("2d");
+		var chart = new Chart(ctx).HorizontalBar(chartData[chart]);
 	}
 
 	/** Filter **/

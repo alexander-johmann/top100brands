@@ -47,6 +47,7 @@ module.exports = (grunt) ->
             "<%= grunt.config.get('assetsDir') %>/js/pace.js",
             "<%= grunt.config.get('assetsDir') %>/js/geojson.top100brands.js",
             "<%= grunt.config.get('assetsDir') %>/js/compiled/oms.js",
+            "<%= grunt.config.get('assetsDir') %>/js/chartnew.js",
             "<%= grunt.config.get('assetsDir') %>/js/map.js"
           ]
 

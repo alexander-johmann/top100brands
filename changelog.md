@@ -14,11 +14,9 @@
 2014-06-16	Navigation Jump Filter Fix, Marker Collision, Design Tweaks
 2014-06-20	2013, 2012
 2014-06-23	2011, 2010
-2014-06-24	Logos
-
+2014-06-24	More Logos, Brand Charts
+2014-06-25	Brand Charts
 
 # Planned Features
--	Vergleich mit letzten Jahren
 -	Category-Top5
 -	Map Attribution, Tracking
-- Country Sidebar
