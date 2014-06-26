@@ -5,6 +5,18 @@
 
 var map, dataLayer, countryLayer = [], fadeout = false;
 
+var colors = {
+	technology: '#3eb9e3',
+	telecoms: '#ff8a54',
+	retail: '#a7da4d',
+	fastfood: '#ef5b63',
+	softdrinks: '#63a7af',
+	cars: '#ec77dc',
+	globalbanks: '#a992ed',
+	luxury: '#ffec7d',
+	oilandgas: '#d9a162'
+};
+
 var charJSPersonalDefaultOptionsHorizontalBar = {
 	graphMin: 0,
 	barStrokeWidth: 0,
@@ -71,7 +83,7 @@ $(function() {
 	canvasNext.stroke();
 
 	/** Map **/
-	map = L.mapbox.map('map', '', { // whateverworks.top100brands
+	map = L.mapbox.map('map', 'aj82.top100brands', { // whateverworks.top100brands
 		legendControl: false,
 		infoControl: false,
 		//fullscreenControl: true,
@@ -154,7 +166,7 @@ $(function() {
 			chartData[layer.feature.properties.Rank] = {
 				labels: ['2010','2011','2012','2013','2014'],
 				datasets: [{
-					fillColor: 'rgba(0,0,0,0.2)',
+					fillColor: 'rgba(33,33,33,0.8)',
 					strokeColor: 'rgba(0,0,0,0)',
 					data: [layer.feature.properties.Value2010,layer.feature.properties.Value2011,layer.feature.properties.Value2012,layer.feature.properties.Value2013,layer.feature.properties.Value]
 				}]
