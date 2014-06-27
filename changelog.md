@@ -17,7 +17,7 @@
 2014-06-24	More Logos, Brand Charts
 2014-06-25	Brand Charts, Firefox compatibility
 2014-06-26	Design Tweaks
-2014-06-27	Design Tweaks
+2014-06-27	Design Tweaks, Tracking
 
 # Planned Features
--	Map Attribution, Tracking
+-	Map Attribution
