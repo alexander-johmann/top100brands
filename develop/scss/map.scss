@@ -134,9 +134,11 @@ h1 span span:before {
 }
 .pace-running h1 span span:before {
   content: attr(data-progress-text);
+  font-weight: 700;
 }
 .pace-done h1 span span:before {
 	content: '100';
+  font-weight: 700;
 }
 
 #down {
@@ -160,7 +162,7 @@ h1 span span:before {
 }
 
 #up {
-	@include position(fixed, 10% 80px none none);
+	@include position(fixed, 6% none none 80px);
 	margin-top: 15px;
 	width: 40px;
 	height: 40px;
@@ -244,6 +246,21 @@ h1 span span:before {
 	#scrollPrev.active,
 	#scrollNext.active {
 		display: block;
+	}
+
+}
+
+#aabout {
+	text-transform: uppercase;
+	font-size: 14px;
+	font-weight: 300;
+	color: #fff;
+	margin-right: 25px;
+	@include transition (color .2s ease-in-out);
+
+	&:hover {
+		color: darken(#fff, 20%);
+		@include transition (color .3s ease-in-out);
 	}
 
 }
@@ -421,7 +438,7 @@ h1 span span:before {
 }
 
 .custom-map .leaflet-popup-content-wrapper {
-	background: rgba(255,255,255,0.8);
+	background: rgba(255,255,255,0.9);
 	color: #333;
 	font-size: 16px;
 	line-height: 24px;
@@ -434,7 +451,7 @@ h1 span span:before {
 .custom-map .leaflet-popup-tip {
 	border-left: 15px solid transparent;
 	border-right: 15px solid transparent;
-	border-top: 15px solid rgba(255,255,255,0.8);
+	border-top: 15px solid rgba(255,255,255,0.9);
 }
 .custom-map .leaflet-popup-close-button {
 	display: none !important;
@@ -575,7 +592,7 @@ h1 span span:before {
 		}
 
 		#up {
-			right: 40px;
+			left: 40px;
 		}
 
 	}
@@ -631,7 +648,7 @@ h1 span span:before {
 		}
 
 		#up {
-			right: 10px;
+			left: 10px;
 			margin-top: 0;
 		}
 
