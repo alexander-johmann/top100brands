@@ -83,7 +83,7 @@ $(function() {
 	canvasNext.stroke();
 
 	/** Map **/
-	map = L.mapbox.map('map', '', { // whateverworks.top100brands, aj82.top100brands
+	map = L.mapbox.map('map', 'aj82.top100brands', { // whateverworks.top100brands
 		legendControl: false,
 		infoControl: false,
 		//fullscreenControl: true,
