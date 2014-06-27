@@ -16,7 +16,8 @@
 2014-06-23	2011, 2010
 2014-06-24	More Logos, Brand Charts
 2014-06-25	Brand Charts, Firefox compatibility
+2014-06-26	Design Tweaks
+2014-06-27	Design Tweaks
 
 # Planned Features
--	Category-Top5
 -	Map Attribution, Tracking

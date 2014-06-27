@@ -83,14 +83,14 @@ $(function() {
 	canvasNext.stroke();
 
 	/** Map **/
-	map = L.mapbox.map('map', 'aj82.top100brands', { // whateverworks.top100brands
+	map = L.mapbox.map('map', '', { // whateverworks.top100brands, aj82.top100brands
 		legendControl: false,
 		infoControl: false,
 		//fullscreenControl: true,
 		scrollWheelZoom: false,
-		zoomControl: true,
+		zoomControl: false,
 		attributionControl: true,
-		center: [35, -20],
+		center: [50, -40],
 		zoom: 3,
 		worldCopyJump: true,
 		//tap: false,
@@ -98,6 +98,9 @@ $(function() {
 	});
 	//map.fitWorld();
 	map.setMaxBounds([[-180,-180], [180,180]]);
+	L.control.zoom({
+		position: 'topright'
+	}).addTo(map);
 
 	/** Country Layer **/
 	/* function addCountry(code) {
@@ -166,7 +169,7 @@ $(function() {
 			chartData[layer.feature.properties.Rank] = {
 				labels: ['2010','2011','2012','2013','2014'],
 				datasets: [{
-					fillColor: 'rgba(33,33,33,0.8)',
+					fillColor: 'rgba(33,33,33,0.5)',
 					strokeColor: 'rgba(0,0,0,0)',
 					data: [layer.feature.properties.Value2010,layer.feature.properties.Value2011,layer.feature.properties.Value2012,layer.feature.properties.Value2013,layer.feature.properties.Value]
 				}]
