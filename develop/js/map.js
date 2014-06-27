@@ -175,10 +175,10 @@ $(function() {
 				}]
 			};
 		});
-		oms.addListener('mouseover', function(dataLayer) {
+		oms.addListener('mouseover click', function(dataLayer) {
 			dataLayer.layer.openPopup();
 		});
-		dataLayer.on('mouseover', function(e) {
+		dataLayer.on('mouseover click', function(e) {
 			e.layer.openPopup();
 			generateChart(e.layer.feature.properties.Rank);
 		});
