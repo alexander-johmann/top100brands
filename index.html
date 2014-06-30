@@ -15,6 +15,9 @@
 	<link href='//api.tiles.mapbox.com/mapbox.js/v1.6.3/mapbox.css' rel='stylesheet' />
 
 	<link rel="stylesheet" type="text/css" href="public/css/app.css" />
+	
+	<!--[if lt IE 9]><style>#notsupported { visibility: visible; }</style><![endif]-->
+
 </head>
 <body>
 	<script>(function(d, s, id) {
@@ -25,6 +28,8 @@
 	  fjs.parentNode.insertBefore(js, fjs);
 	}(document, 'script', 'facebook-jssdk'));</script>
 	<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+
+	<div id="notsupported">Sorry, this website doesn't support your ancient browser. :(</div>
 
 	<div id="ruler"></div>
 

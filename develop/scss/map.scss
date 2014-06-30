@@ -18,13 +18,26 @@ body {
 	&.pace-progress {		
 	}
 	&.pace-done {
-		overflow: scroll;
+		overflow-y: scroll;
 	}
 
 }
 
-.pace, section {
+.pace, section, #notsupported {
 	visibility: hidden;
+}
+
+#notsupported {
+	z-index: 99999;
+	background: white;
+	position: absolute;
+	top: 0;
+	left: 0;
+	right: 0;
+	width: 100%;
+	padding: 10px;
+	color: #F00;
+	font-weight: 500;	
 }
 
 .debug #ruler {
@@ -198,6 +211,7 @@ h1 span span:before {
 
 	div#navBar {
 		overflow-x: scroll;
+		overflow-y: hidden;
 
 		ul {
 			list-style: none;
