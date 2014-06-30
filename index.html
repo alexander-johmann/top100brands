@@ -29,10 +29,6 @@
 	}(document, 'script', 'facebook-jssdk'));</script>
 	<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
 
-	<div id="notsupported">Sorry, this website doesn't support your ancient browser. :(</div>
-
-	<div id="ruler"></div>
-
 	<div id="sharingtop" class="sharing desktoptablet"
 		data-0-start="top:-30px;"
 		data-400-start="top:18px;"
@@ -58,10 +54,6 @@
 	<div id="map" class="dark custom-map"
 		data-4500-start="bottom:0%;"
 		data-4700-start="bottom:80%;"></div>
-		<!-- data-0-start="-webkit-filter:brightness(0.3);-moz-filter:brightness(0.3);-ms-filter:brightness(0.3);filter:brightness(0.3);"
-		data-400-start="-webkit-filter:brightness(1);-moz-filter:brightness(1);-ms-filter:brightness(1);filter:brightness(1);"
-		data-4500-start="bottom:0%;-webkit-filter:brightness(1);-moz-filter:brightness(1);-ms-filter:brightness(1);filter:brightness(1);"
-		data-4700-start="bottom:70%;-webkit-filter:brightness(0.5);-moz-filter:brightness(0.5);-ms-filter:brightness(0.5);filter:brightness(0.5);"></div> -->
 
 	<div id="curtain">
 		<div id="curtaintop"
@@ -73,26 +65,7 @@
 			data-0-start="height:100%"
 			data-400-start="height:0%"></div>
 	</div>
-
-	<!--
-	<div id="curtain">
-		<div id="curtainleft"
-			data-0-start="width:50%"
-			data-400-start="width:0"></div>
-		<div id="curtainright"
-			data-0-start="width:50%"
-			data-400-start="width:0"></div>
-	</div>
-	-->
-
 	<div id="content">
-
-		<!--
-			left:0%;margin-left:0px;
-			left:-50%;margin-left:90px;
-			left:-50%;margin-left:90px;
-			left:0%;margin-left:0px;
-		-->
 		<h1 class="desktop"
 			data-0-start="transform:scale(1);-webkit-transform:scale(1);-moz-transform:scale(1);top:50%;margin-top:-80px;"
 			data-400-start="transform:scale(0.25);-webkit-transform:scale(0.25);-moz-transform:scale(0.25);top:0%;margin-top:-22px;"
@@ -177,6 +150,9 @@
 		<div id="scrollPrev"><canvas width="35" height="55"></canvas></div>
 		<div id="scrollNext"><canvas width="35" height="55"></canvas></div>
 	</div>
+
+	<div id="ruler"></div>
+	<div id="notsupported">Sorry, this website doesn't support your ancient browser. :(</div>
 
 	<script src='public/js/app.js'></script>
 	<script>
