@@ -246,6 +246,7 @@ $(function() {
 						navElem.removeClass('active');
 						navItem.addClass('active');
 						filterDataLayer(navItem.text());
+						setHash($(this).attr('id'));
 						boxDone[index] = true;
 					}
 				} else if (boxDone[index]) {
@@ -291,6 +292,9 @@ $(function() {
 			scroll.animateTo($('#'+hash).data('scroll'));
 		}
 	});
+	function setHash (hash) {
+		history.pushState(null, null, '#/'+hash);
+	}
 
 	/** Navigation Scroller **/
 	var navScroller = $('#navBar');

@@ -18,13 +18,11 @@
 2014-06-25	Brand Charts, Firefox compatibility
 2014-06-26	Design Tweaks
 2014-06-27	Design Tweaks, Tracking, Touch compatibility
-2014-06-30	Touch compatibility, Ancient browser info
+2014-06-30	Touch compatibility, Ancient browser info, Hash navigation scroll
 
 # Planned Features
 - Windows Phone compatibility
 - IE compatibility
-- z-index Popups
 - Loading About jump
-- Hash Navigation update during scrolling
 
 -	Map Attribution
