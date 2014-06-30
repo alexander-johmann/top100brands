@@ -31,7 +31,7 @@ var charJSPersonalDefaultOptionsHorizontalBar = {
 	inGraphDataXPosition: 3,
 	inGraphDataPaddingX: -5,
 	inGraphDataAlign: 'right',
-	inGraphDataTmpl: 'M$ <%=v3%>',
+	inGraphDataTmpl: 'M$ <%=v3%>',
 	inGraphDataFontFamily: 'inconsolata',
 	inGraphDataFontSize: 14,
 	scaleFontColor: '#666',
@@ -39,11 +39,23 @@ var charJSPersonalDefaultOptionsHorizontalBar = {
 	scaleFontSize: 14,
 };
 
+function is_touch_device() {
+	return 'ontouchstart' in window // works on most browsers 
+		|| 'onmsgesturechange' in window; // works on ie10
+};
+
 $(function() {
 
 	/** Debug **/
 	var debug = false;
 	if (debug) $('body').addClass('debug');
+
+	/** Touch **/
+	var touch = false;
+	if (is_touch_device()) {
+		touch = true;
+		$('body').addClass('touch');
+	}
 
 	/** Canvas **/
 	var canvasDown = $('#down canvas')[0].getContext('2d');
@@ -164,7 +176,7 @@ $(function() {
 						'<div class="rank">' + layer.feature.properties.Rank + '.</div>' +
 					'</div>' +
 				'</div>' +
-				'<canvas id="chart" width="200" height="120"></canvas';
+				'<canvas id="chart-' + layer.feature.properties.Rank + '" class="chart" width="200" height="120"></canvas';
 			layer.bindPopup(content);
 			chartData[layer.feature.properties.Rank] = {
 				labels: ['2010','2011','2012','2013','2014'],
@@ -175,9 +187,9 @@ $(function() {
 				}]
 			};
 		});
-		oms.addListener('mouseover click', function(dataLayer) {
+		/* oms.addListener('mouseover', function(dataLayer) {
 			dataLayer.layer.openPopup();
-		});
+		}); */
 		dataLayer.on('mouseover click', function(e) {
 			e.layer.openPopup();
 			generateChart(e.layer.feature.properties.Rank);
@@ -188,9 +200,14 @@ $(function() {
 	}
 
 	/** Tooltip Charts **/
-	function generateChart(chart) {
-		var ctx = $('#chart').get(0).getContext("2d");
-		var chart = new Chart(ctx).HorizontalBar(chartData[chart]);
+	var ctx = [];
+	var chart = [];
+	function generateChart(chartnr) {
+		ctx[chartnr] = $('#chart-'+chartnr).get(0).getContext("2d");
+		chart[chartnr] = new Chart(ctx[chartnr]);
+		$('#chart-'+chartnr)[0].width = 200;
+		$('#chart-'+chartnr)[0].height = 120;
+		chart[chartnr].HorizontalBar(chartData[chartnr]);
 	}
 
 	/** Filter **/

@@ -23,6 +23,10 @@ body {
 
 }
 
+.pace, section {
+	visibility: hidden;
+}
+
 .debug #ruler {
 	@include position(fixed, 0 none none 0);
 	height: 5px;
@@ -121,6 +125,7 @@ a {
 		@include animation (fadein 3s ease-in-out);
 		color: rgba(255,255,255,.9);
 		font-weight: 100;
+		font-size: 30px;
 	}
 
 	section {
@@ -429,7 +434,7 @@ h1 span span:before {
 
 }
 
-#chart {
+.chart {
 	margin-top: 25px;
 }
 
@@ -591,6 +596,11 @@ h1 span span:before {
 			}
 		}
 
+		h2 {
+			font-size: 24px;
+			margin-top: 40px;
+		}
+
 		#up {
 			left: 40px;
 		}
@@ -645,6 +655,11 @@ h1 span span:before {
 				/*text-shadow: 1px 1px 0 #666, 2px 2px 0 #FFF;
 				box-shadow: 1px 1px 0 #999, 2px 2px 0 #FFF;*/
 			}
+		}
+
+		h2 {
+			font-size: 20px;
+			margin-top: 15px;
 		}
 
 		#up {

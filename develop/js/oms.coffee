@@ -41,7 +41,7 @@ class @['OverlappingMarkerSpiderfier']
     (@[k] = v) for own k, v of opts
     @initMarkerArrays()
     @listeners = {}
-    @map.addEventListener(e, => @['unspiderfy']()) for e in ['click', 'zoomend']
+    #@map.addEventListener(e, => @['unspiderfy']()) for e in ['click', 'zoomend']		#aj > #
     
   p.initMarkerArrays = ->
     @markers = []
@@ -51,7 +51,7 @@ class @['OverlappingMarkerSpiderfier']
     return @ if marker['_oms']?
     marker['_oms'] = yes
     markerListener = => @spiderListener(marker)
-    marker.addEventListener('mouseover', markerListener)	#aj 'click'
+    marker.addEventListener('mouseover click', markerListener)	#aj 'click' > 'mouseover click'
     @markerListeners.push(markerListener)
     @markers.push(marker)
     @  # return self, for chaining

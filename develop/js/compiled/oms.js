@@ -52,7 +52,7 @@ Note: The Leaflet maps API must be included *before* this code
     };
 
     function _Class(map, opts) {
-      var e, k, v, _i, _len, _ref;
+      var k, v;
       this.map = map;
       if (opts == null) {
         opts = {};
@@ -64,15 +64,6 @@ Note: The Leaflet maps API must be included *before* this code
       }
       this.initMarkerArrays();
       this.listeners = {};
-      _ref = ['click', 'zoomend'];
-      for (_i = 0, _len = _ref.length; _i < _len; _i++) {
-        e = _ref[_i];
-        this.map.addEventListener(e, (function(_this) {
-          return function() {
-            return _this['unspiderfy']();
-          };
-        })(this));
-      }
     }
 
     p.initMarkerArrays = function() {
@@ -91,7 +82,7 @@ Note: The Leaflet maps API must be included *before* this code
           return _this.spiderListener(marker);
         };
       })(this);
-      marker.addEventListener('mouseover', markerListener);
+      marker.addEventListener('mouseover click', markerListener);
       this.markerListeners.push(markerListener);
       this.markers.push(marker);
       return this;
