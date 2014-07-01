@@ -1,5 +1,3 @@
-/*! pace 0.5.1 */
-
 /*	Patched by Alexander Johmann
 		+ document.querySelector('h1.desktop span span').setAttribute("data-progress-text", "" + (0 | this.progress))
 		+ document.querySelector('h1.tablet span span').setAttribute("data-progress-text", "" + (0 | this.progress))
@@ -8,10 +6,10 @@
 */
 
 paceOptions = {
-	restartOnPushState: false
+		restartOnPushState: false
 };
 
-(function() {
+/*! pace 0.5.4 */ (function() {
 		var a, b, c, d, e, f, g, h, i, j, k, l, m, n, o, p, q, r, s, t, u, v, w, x, y, z, A, B, C, D, E, F, G, H, I, J, K, L, M, N, O, P, Q, R, S, T, U, V, W = [].slice,
 				X = {}.hasOwnProperty,
 				Y = function(a, b) {
@@ -53,7 +51,7 @@ paceOptions = {
 				}
 		}, B = function() {
 				var a;
-				return null != (a = "undefined" != typeof performance && null !== performance ? "function" == typeof performance.now ? performance.now() : void 0 : void 0) ? a : +new Date
+				return null != (a = "undefined" != typeof performance && null !== performance && "function" == typeof performance.now ? performance.now() : void 0) ? a : +new Date
 		}, D = window.requestAnimationFrame || window.mozRequestAnimationFrame || window.webkitRequestAnimationFrame || window.msRequestAnimationFrame, s = window.cancelAnimationFrame || window.mozCancelAnimationFrame, null == D && (D = function(a) {
 				return setTimeout(a, 50)
 		}, s = function(a) {
@@ -102,13 +100,13 @@ paceOptions = {
 						var c, d, e;
 						if (null != (null != (d = this.bindings) ? d[a] : void 0)) {
 								if (null == b) return delete this.bindings[a];
-								for (c = 0, e = []; c < this.bindings[a].length;) this.bindings[a][c].handler === b ? e.push(this.bindings[a].splice(c, 1)) : e.push(c++);
+								for (c = 0, e = []; c < this.bindings[a].length;) e.push(this.bindings[a][c].handler === b ? this.bindings[a].splice(c, 1) : c++);
 								return e
 						}
 				}, a.prototype.trigger = function() {
 						var a, b, c, d, e, f, g, h, i;
 						if (c = arguments[0], a = 2 <= arguments.length ? W.call(arguments, 1) : [], null != (g = this.bindings) ? g[c] : void 0) {
-								for (e = 0, i = []; e < this.bindings[c].length;) h = this.bindings[c][e], d = h.handler, b = h.ctx, f = h.once, d.apply(null != b ? b : this, a), f ? i.push(this.bindings[c].splice(e, 1)) : i.push(e++);
+								for (e = 0, i = []; e < this.bindings[c].length;) h = this.bindings[c][e], d = h.handler, b = h.ctx, f = h.once, d.apply(null != b ? b : this, a), i.push(f ? this.bindings[c].splice(e, 1) : e++);
 								return i
 						}
 				}, a
@@ -165,7 +163,7 @@ paceOptions = {
 				var c, d, e, f;
 				f = [];
 				for (d in b.prototype) try {
-						e = b.prototype[d], null == a[d] && "function" != typeof e ? f.push(a[d] = e) : f.push(void 0)
+						e = b.prototype[d], f.push(null == a[d] && "function" != typeof e ? a[d] = e : void 0)
 				} catch (g) {
 						c = g
 				}
