@@ -29,7 +29,7 @@
 	}(document, 'script', 'facebook-jssdk'));</script>
 	<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
 
-	<div id="sharingtop" class="sharing desktoptablet"
+	<div id="sharingtop"
 		data-0-start="top:-30px;"
 		data-400-start="top:18px;"
 		data-4500-start="top:18px;"
@@ -37,10 +37,12 @@
 
 		<a href="#/about" data-scroll="4800" id="aabout">About</a>
 
-		<div id="fb-root"></div>
-		<div class="fb-like" data-href="http://alexander.johmann.eu/top100brands/" data-layout="button" data-action="like" data-show-faces="false" data-share="false"></div>
-		<span class="spacer"></span>
-		<a href="https://twitter.com/share" class="twitter-share-button" data-text="Map of the Top 100 Brands 2014" data-via="aj82" data-count="none">Tweet</a>
+		<div class="sharing desktoptablet">
+			<div id="fb-root"></div>
+			<div class="fb-like" data-href="http://alexander.johmann.eu/top100brands/" data-layout="button" data-action="like" data-show-faces="false" data-share="false"></div>
+			<span class="spacer"></span>
+			<a href="https://twitter.com/share" class="twitter-share-button" data-text="Map of the Top 100 Brands 2014" data-via="aj82" data-count="none">Tweet</a>
+		</div>
 	</div>
 	<div id="sharingbottom" class="sharing"
 		data-4400-start="display:!none;"
@@ -54,22 +56,23 @@
 	<div id="map" class="dark custom-map"
 		data-4500-start="bottom:0%;"
 		data-4700-start="bottom:80%;"></div>
+
 	<div id="content">
 		<h1 class="desktop"
 			data-0-start="transform:scale(1);-webkit-transform:scale(1);-moz-transform:scale(1);top:50%;margin-top:-80px;"
-			data-400-start="transform:scale(0.25);-webkit-transform:scale(0.25);-moz-transform:scale(0.25);top:0%;margin-top:-22px;"
-			data-4500-start="transform:scale(0.25);-webkit-transform:scale(0.25);-moz-transform:scale(0.25);top:0%;margin-top:-22px;"
+			data-400-start="transform:scale(0.25);-webkit-transform:scale(0.25);-moz-transform:scale(0.25);top:0%;margin-top:-20px;"
+			data-4500-start="transform:scale(0.25);-webkit-transform:scale(0.25);-moz-transform:scale(0.25);top:0%;margin-top:-20px;"
 			data-4800-start="transform:scale(0.5);-webkit-transform:scale(0.5);-moz-transform:scale(0.5);top:10%;margin-top:-50px;"><span>Top <span></span> Brands</span></h1>
 		<h1 class="tablet"
 			data-0-start="transform:scale(1);-webkit-transform:scale(1);-moz-transform:scale(1);top:50%;margin-top:-80px;"
-			data-400-start="transform:scale(0.4);-webkit-transform:scale(0.4);-moz-transform:scale(0.4);top:0%;margin-top:10px;"
-			data-4500-start="transform:scale(0.4);-webkit-transform:scale(0.4);-moz-transform:scale(0.4);top:0%;margin-top:10px;"
-			data-4800-start="transform:scale(0.7);-webkit-transform:scale(0.7);-moz-transform:scale(0.7);top:10%;margin-top:0px;"><span>Top <span></span> Brands</span></h1>
+			data-400-start="transform:scale(0.4);-webkit-transform:scale(0.4);-moz-transform:scale(0.4);top:0%;margin-top:-2px;"
+			data-4500-start="transform:scale(0.4);-webkit-transform:scale(0.4);-moz-transform:scale(0.4);top:0%;margin-top:-2px;"
+			data-4800-start="transform:scale(0.7);-webkit-transform:scale(0.7);-moz-transform:scale(0.7);top:10%;margin-top:-30px;"><span>Top <span></span> Brands</span></h1>
 		<h1 class="phone"
-			data-0-start="transform:scale(1);-webkit-transform:scale(1);-moz-transform:scale(1);top:50%;margin-top:-80px;"
-			data-400-start="transform:scale(0.6);-webkit-transform:scale(0.6);-moz-transform:scale(0.6);top:0%;margin-top:20px;"
-			data-4500-start="transform:scale(0.6);-webkit-transform:scale(0.6);-moz-transform:scale(0.6);top:0%;margin-top:20px;"
-			data-4800-start="transform:scale(0.7);-webkit-transform:scale(0.7);-moz-transform:scale(0.7);top:10%;margin-top:0px;"><span>Top <span></span> Brands</span></h1>
+			data-0-start="transform:scale(1);-webkit-transform:scale(1);-moz-transform:scale(1);top:50%;margin-top:-80px;left:0%;margin-left:0px;"
+			data-400-start="transform:scale(0.6);-webkit-transform:scale(0.6);-moz-transform:scale(0.6);top:0%;margin-top:8px;left:-50%;margin-left:85px;"
+			data-4500-start="transform:scale(0.6);-webkit-transform:scale(0.6);-moz-transform:scale(0.6);top:0%;margin-top:8px;left:-50%;margin-left:85px;"
+			data-4800-start="transform:scale(0.7);-webkit-transform:scale(0.7);-moz-transform:scale(0.7);top:10%;margin-top:-20px;left:0%;margin-left:0px;"><span>Top <span></span> Brands</span></h1>
 
 		<h2
 			data-0-start="opacity:1;visibility:!visible;"

@@ -180,8 +180,8 @@ h1 span span:before {
 }
 
 #up {
-	@include position(fixed, 6% none none 80px);
-	margin-top: 15px;
+	@include position(fixed, 10% none none 80px);
+	margin-top: -20px;
 	width: 40px;
 	height: 40px;
 	z-index: 2;
@@ -275,6 +275,7 @@ h1 span span:before {
 	font-weight: 300;
 	color: #fff;
 	margin-right: 25px;
+	display: inline-block;
 	@include transition (color .2s ease-in-out);
 
 	&:hover {
@@ -573,25 +574,28 @@ h1 span span:before {
 		width: 2px;
 		display: inline-block;
 	}
+}
 
-	&#sharingtop {
-		@include position(fixed, 38px 20px none none);
-		z-index: 2;
-	}
-	&#sharingbottom {
-		@include position(fixed, none 80px 5% none);
-		margin-bottom: 12px;
-	}
+#sharingtop {
+	@include position(fixed, 38px 20px none none);
+	z-index: 2;
 
+	.sharing {
+		display:inline-block;
+	}
+}
+#sharingbottom {
+	@include position(fixed, none 80px 5% none);
+	margin-bottom: 12px;
 }
 
 @media all and (max-width: 768px) { /* PHONE & TABLET */
 
 	.desktop, .phone {
-		display: none;
+		display: none !important;
 	}
 	.tablet {
-		display: block;
+		display: block !important;
 	}
 
 	.debug #ruler {
@@ -652,10 +656,10 @@ h1 span span:before {
 @media all and (max-width: 480px) { /* PHONE */
 
 	.desktop, .tablet, .desktoptablet {
-		display: none;
+		display: none !important;
 	}
 	.phone {
-		display: block;
+		display: block !important;
 	}
 
 	.debug #ruler {
@@ -678,7 +682,6 @@ h1 span span:before {
 
 		#up {
 			left: 10px;
-			margin-top: 0;
 		}
 
 	}
@@ -686,22 +689,35 @@ h1 span span:before {
 	#info {
 		width: 92%;
 		margin: 0 4%;
+
+		p.intro {
+			font-size: 18px;
+			a {
+				background-position: 0 18px;
+			}
+		}
+		p, li {
+			font-size: 14px;
+		}
+		a {
+			background-position: 0 14px;
+		}
 	}
 
 	#logo {
 		bottom: 3%;
-		left: 50%;
-		margin-left: -20px;
+		margin-left: 10px;
 	}
 
 	.sharing {
 		&#sharingbottom {
-			@include position(fixed, 22% 0 auto 0);
-			margin: 0;
-			width: 100%;
-			text-align: center;
-			z-index: 2;
+			bottom: 3%;
+			right: 4%;
 		}
+	}
+
+	#aabout {
+		margin-right: 0;
 	}
 
 }
