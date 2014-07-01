@@ -6,7 +6,7 @@
 */
 
 paceOptions = {
-		restartOnPushState: false
+	restartOnPushState: false
 };
 
 /*! pace 0.5.4 */ (function() {

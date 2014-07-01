@@ -19,13 +19,9 @@
 2014-06-26	Design Tweaks
 2014-06-27	Design Tweaks, Tracking, Touch tweaks
 2014-06-30	Touch tweaks, Ancient browser info, Hash navigation scroll, Mobile tweaks
+2014-07-01	IE11 compatibility
 
 # Planned Features
-
 - MOBILE OVERFLOW
-
-- Windows Phone compatibility
-- IE compatibility
-- Loading About jump
-
 -	Map Attribution
+- Windows Phone compatibility
