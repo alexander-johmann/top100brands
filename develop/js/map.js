@@ -95,7 +95,7 @@ $(function() {
 	canvasNext.stroke();
 
 	/** Map **/
-	map = L.mapbox.map('map', 'aj82.top100brands', { // whateverworks.top100brands
+	map = L.map('map', {
 		legendControl: false,
 		infoControl: false,
 		//fullscreenControl: true,
@@ -108,7 +108,7 @@ $(function() {
 		//tap: false,
 		//dragging: false,
 	});
-	//map.fitWorld();
+	map.addLayer(new L.TileLayer('images/maptiles/{z}/{x}/{y}.png'));
 	map.setMaxBounds([[-180,-180], [180,180]]);
 	L.control.zoom({
 		position: 'topright'
