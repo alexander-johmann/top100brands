@@ -20,7 +20,7 @@
 2014-06-27	Design Tweaks, Tracking, Touch tweaks
 2014-06-30	Touch tweaks, Ancient browser info, Hash navigation scroll, Mobile tweaks
 2014-07-01	IE11 compatibility
-2014-08-03	Local Map tiles
+2014-08-03	Local Map tiles, Marker & Popup tweaks
 
 # Planned Features
 - MOBILE OVERFLOW

@@ -280,7 +280,7 @@ Note: The Leaflet maps API must be included *before* this code
             marker.addEventListener('mouseout', mhl.unhighlight);
           }
           marker.setLatLng(footLl);
-          marker.setZIndexOffset(1000000);
+          marker.setZIndexOffset(100);
           _results.push(marker);
         }
         return _results;

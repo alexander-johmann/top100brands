@@ -372,10 +372,17 @@ h1 span span:before {
 }
 
 .marker {
-	border: 2px solid rgba(255,255,255,.3);
+	border: 2px solid rgba(255,255,255,.4);
 	background: rgba(255,255,255,.7);
 	border-radius: 100%;
 	@include animation (fadein .5s ease-in-out);
+	@include transition(background .3s ease-in-out);
+
+	&:hover {
+		z-index: 9999 !important;
+		background: rgba(255,255,255,1);
+		@include transition(background .3s ease-in-out);
+	}
 }
 
 .marker.fadeout {
@@ -430,6 +437,10 @@ h1 span span:before {
 	.marker.#{$thisCategory} {
 		background: rgba($thisColor,.7);
 		border-color: rgba($thisColor,.4);
+
+		&:hover {
+			background: rgba($thisColor,1);
+		};
 	}
 
 }
@@ -441,6 +452,22 @@ h1 span span:before {
 .custom-map.leaflet-container {
 	background: #333;
 	font-family: "proxima-nova",sans-serif;
+}
+
+.custom-map .leaflet-popup {
+	margin-bottom: 50px;
+	opacity: 0 !important;
+
+	&.popupopen {
+		margin-bottom: 10px;
+		opacity: 1 !important;
+		@include transition (all .4s ease-out);
+	}
+	&.popupclose {
+		margin-bottom: -50px;
+		opacity: 0 !important;
+		@include transition (all .4s ease-out);
+	}
 }
 
 .custom-map .leaflet-popup-content-wrapper {

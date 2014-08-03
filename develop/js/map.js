@@ -104,6 +104,8 @@ $(function() {
 		attributionControl: false,
 		center: [50, -40],
 		zoom: 3,
+		minZoom: 2,
+		maxZoom: 7,
 		worldCopyJump: true,
 		//tap: false,
 		//dragging: false,
@@ -157,6 +159,7 @@ $(function() {
 	/** Tooltips **/
 	var chartData = [];
 	function tooltips() {
+		unBindLayerEvents();
 		dataLayer.eachLayer(function(layer) {
 			var content =
 				'<div class="img"><img src="images/logos/' + layer.feature.properties.Brand.replace(/ /g,'').toLowerCase() + '.svg" alt="' + layer.feature.properties.Brand + '" /></div>' +
@@ -177,7 +180,9 @@ $(function() {
 					'</div>' +
 				'</div>' +
 				'<canvas id="chart-' + layer.feature.properties.Rank + '" class="chart" width="200" height="120"></canvas';
-			layer.bindPopup(content);
+			layer.bindPopup(content, {
+				closeButton: false
+			});
 			chartData[layer.feature.properties.Rank] = {
 				labels: ['2010','2011','2012','2013','2014'],
 				datasets: [{
@@ -187,17 +192,60 @@ $(function() {
 				}]
 			};
 		});
-		/* oms.addListener('mouseover', function(dataLayer) {
-			dataLayer.layer.openPopup();
-		}); */
+		
+		bindLayerEvents();
+	}
+
+	function bindLayerEvents() {
 		dataLayer.on('mouseover click', function(e) {
-			e.layer.openPopup();
-			generateChart(e.layer.feature.properties.Rank);
+			openPopup(e);
 		});
 		dataLayer.on('mouseout', function(e) {
 			e.layer.closePopup();
+			//closePopup(e);
 		});
+	}	
+	function unBindLayerEvents() {
+		dataLayer.off('mouseover click');
 	}
+
+	/** Popup **/
+	var activePopup = false;
+	//var safePopup = false;
+	function openPopup(e) {
+		if (!activePopup) {
+			e.layer.openPopup();
+			$('.leaflet-popup').addClass('popupopen');
+			generateChart(e.layer.feature.properties.Rank);
+		} //else safePopup = e;
+	}
+	
+	function closePopup(e) {
+		activePopup = true;
+		$('.leaflet-popup').addClass('popupclose');
+		window.setTimeout(function(){
+			$('.leaflet-popup').removeClass('popupopen popupclose');
+			e.layer.closePopup();
+			activePopup = false;
+			if (!safePopup) {
+				openPopup(safePopup);
+				safePopup = false;
+			}
+		},400);
+	}
+
+	// function closePopup(e) {
+	// 	popupCloseActive = true;
+	// 	$('.leaflet-popup').addClass('popupclose');
+	// 	window.setTimeout(function(){
+	// 		$('.leaflet-popup').removeClass('popupopen popupclose');
+	// 		e.layer.closePopup();
+	// 		popupCloseActive = null;
+	// 		if (nextPopup) {
+	// 			openPopup(nextPopup);
+	// 		}
+	// 	},300);
+	// }
 
 	/** Tooltip Charts **/
 	var ctx = [];

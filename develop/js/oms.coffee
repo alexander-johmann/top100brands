@@ -164,7 +164,7 @@ class @['OverlappingMarkerSpiderfier']
         marker.addEventListener('mouseover', mhl.highlight)
         marker.addEventListener('mouseout',  mhl.unhighlight)
       marker.setLatLng(footLl)
-      marker.setZIndexOffset(1000000)
+      marker.setZIndexOffset(100) #aj 1000000
       marker
     delete @spiderfying
     @spiderfied = yes
