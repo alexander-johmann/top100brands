@@ -101,7 +101,7 @@ $(function() {
 		//fullscreenControl: true,
 		scrollWheelZoom: false,
 		zoomControl: false,
-		attributionControl: true,
+		attributionControl: false,
 		center: [50, -40],
 		zoom: 3,
 		worldCopyJump: true,
