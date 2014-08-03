@@ -1,0 +1,11 @@
+{
+    "attribution": "", 
+    "description": "", 
+    "center": "0,0,3", 
+    "bounds": "-180,-85.0511,180,85.0511", 
+    "minzoom": "2", 
+    "version": "1.0.0", 
+    "template": "", 
+    "maxzoom": "7", 
+    "name": "Top 100 Brands"
+}
