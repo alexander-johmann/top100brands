@@ -94,6 +94,18 @@ $(function() {
 	canvasNext.strokeStyle = 'rgba(255,255,255,0.9)';
 	canvasNext.stroke();
 
+	/** Map Close Popup Hack**/
+	L.Map = L.Map.extend({
+		openPopup: function(popup) {
+			this.closePopup();
+			//closePopup();
+			this._popup = popup;
+			return this.addLayer(popup).fire('popupopen', {
+				popup: this._popup
+			});
+		}
+	});
+
 	/** Map **/
 	map = L.map('map', {
 		legendControl: false,
@@ -107,6 +119,7 @@ $(function() {
 		minZoom: 2,
 		maxZoom: 7,
 		worldCopyJump: true,
+		//closePopupOnClick: false,
 		//tap: false,
 		//dragging: false,
 	});
@@ -201,7 +214,6 @@ $(function() {
 			openPopup(e);
 		});
 		dataLayer.on('mouseout', function(e) {
-			e.layer.closePopup();
 			//closePopup(e);
 		});
 	}	
@@ -210,42 +222,19 @@ $(function() {
 	}
 
 	/** Popup **/
-	var activePopup = false;
-	//var safePopup = false;
 	function openPopup(e) {
-		if (!activePopup) {
-			e.layer.openPopup();
-			$('.leaflet-popup').addClass('popupopen');
-			generateChart(e.layer.feature.properties.Rank);
-		} //else safePopup = e;
+		e.layer.openPopup();
+		$('.leaflet-popup').addClass('popupopen');
+		generateChart(e.layer.feature.properties.Rank);
 	}
-	
-	function closePopup(e) {
-		activePopup = true;
-		$('.leaflet-popup').addClass('popupclose');
-		window.setTimeout(function(){
-			$('.leaflet-popup').removeClass('popupopen popupclose');
-			e.layer.closePopup();
-			activePopup = false;
-			if (!safePopup) {
-				openPopup(safePopup);
-				safePopup = false;
-			}
-		},400);
+	function closePopup() {
+		e.layer.closePopup();
+		// $('.leaflet-popup').addClass('popupclose');
+// 		window.setTimeout(function(){
+// 			var elem = $('.leaflet-popup.popupclose').removeClass('popupopen popupclose').remove();
+// 			//e.layer.closePopup();
+// 		},400);
 	}
-
-	// function closePopup(e) {
-	// 	popupCloseActive = true;
-	// 	$('.leaflet-popup').addClass('popupclose');
-	// 	window.setTimeout(function(){
-	// 		$('.leaflet-popup').removeClass('popupopen popupclose');
-	// 		e.layer.closePopup();
-	// 		popupCloseActive = null;
-	// 		if (nextPopup) {
-	// 			openPopup(nextPopup);
-	// 		}
-	// 	},300);
-	// }
 
 	/** Tooltip Charts **/
 	var ctx = [];
