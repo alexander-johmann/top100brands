@@ -41,7 +41,7 @@ class @['OverlappingMarkerSpiderfier']
     (@[k] = v) for own k, v of opts
     @initMarkerArrays()
     @listeners = {}
-    #@map.addEventListener(e, => @['unspiderfy']()) for e in ['click', 'zoomend']		#aj > #
+    @map.addEventListener(e, => @['unspiderfy']()) for e in ['zoomend']		#aj 'click', 'zoomend' > 'zoomend'
     
   p.initMarkerArrays = ->
     @markers = []
@@ -165,6 +165,8 @@ class @['OverlappingMarkerSpiderfier']
         marker.addEventListener('mouseout',  mhl.unhighlight)
       marker.setLatLng(footLl)
       marker.setZIndexOffset(100) #aj 1000000
+      marker._icon.className += ' spiderfied' #aj Row added
+      $('#map').addClass('spiderfied') #aj Row added
       marker
     delete @spiderfying
     @spiderfied = yes
@@ -175,6 +177,8 @@ class @['OverlappingMarkerSpiderfier']
     @unspiderfying = yes
     unspiderfiedMarkers = []
     nonNearbyMarkers = []
+    $('#map').removeClass('spiderfied') #aj Row added
+    $('.marker').removeClass('spiderfied').data('transition-status', 'deleted') #aj Row added
     for marker in @markers
       if marker['_omsData']?
         @map.removeLayer(marker['_omsData'].leg)

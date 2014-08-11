@@ -52,7 +52,7 @@ Note: The Leaflet maps API must be included *before* this code
     };
 
     function _Class(map, opts) {
-      var k, v;
+      var e, k, v, _i, _len, _ref;
       this.map = map;
       if (opts == null) {
         opts = {};
@@ -64,6 +64,15 @@ Note: The Leaflet maps API must be included *before* this code
       }
       this.initMarkerArrays();
       this.listeners = {};
+      _ref = ['zoomend'];
+      for (_i = 0, _len = _ref.length; _i < _len; _i++) {
+        e = _ref[_i];
+        this.map.addEventListener(e, (function(_this) {
+          return function() {
+            return _this['unspiderfy']();
+          };
+        })(this));
+      }
     }
 
     p.initMarkerArrays = function() {
@@ -281,6 +290,8 @@ Note: The Leaflet maps API must be included *before* this code
           }
           marker.setLatLng(footLl);
           marker.setZIndexOffset(100);
+          marker._icon.className += ' spiderfied';
+          $('#map').addClass('spiderfied');
           _results.push(marker);
         }
         return _results;
@@ -301,6 +312,8 @@ Note: The Leaflet maps API must be included *before* this code
       this.unspiderfying = true;
       unspiderfiedMarkers = [];
       nonNearbyMarkers = [];
+      $('#map').removeClass('spiderfied');
+      $('.marker').removeClass('spiderfied').data('transition-status', 'deleted');
       _ref = this.markers;
       for (_i = 0, _len = _ref.length; _i < _len; _i++) {
         marker = _ref[_i];

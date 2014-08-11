@@ -162,7 +162,8 @@ $(function() {
 		e.layer.setIcon(
 			L.divIcon({
 				className: 'marker ' + e.layer.feature.properties.Category.replace(/ /g,'').toLowerCase(),
-				iconSize: [e.layer.feature.properties.Pin,e.layer.feature.properties.Pin]
+				iconSize: [e.layer.feature.properties.Pin,e.layer.feature.properties.Pin],
+				html: '<div class="markerInner">&nbsp;</div>'
 			})
 		);
 		oms.addMarker(e.layer);
@@ -207,33 +208,50 @@ $(function() {
 		});
 		
 		bindLayerEvents();
+		bindMarkerEvents();
 	}
 
 	function bindLayerEvents() {
+
 		dataLayer.on('mouseover click', function(e) {
-			openPopup(e);
+			var $icon = $(e.layer._icon);
+			if ($icon.data('transition-status') === 'finished' || !$icon.hasClass('spiderfied')) {
+				openPopup(e);
+			}
 		});
+
 		dataLayer.on('mouseout', function(e) {
-			//closePopup(e);
+			closePopup(e);
 		});
 	}	
 	function unBindLayerEvents() {
 		dataLayer.off('mouseover click');
 	}
 
+	function bindMarkerEvents() {
+		$('.marker').on('transitionend webkitTransitionEnd oTransitionEnd MSTransitionEnd', function() {
+			if ($(this).data('transition-status') === 'deleted') $(this).data('transition-status', null);
+			else $(this).data('transition-status', 'finished');
+			return false;
+		});
+	}
+
 	/** Popup **/
 	function openPopup(e) {
-		e.layer.openPopup();
-		$('.leaflet-popup').addClass('popupopen');
+		var popup = e.layer.openPopup();
+		var $popupPane = $('.leaflet-popup-pane');		
+		var $popup = $('.leaflet-popup');
+		var $popupHtml = '<div class="popup-container">' + $popup.html() + '</div>';
+		$popup.html($popupHtml);
+
 		generateChart(e.layer.feature.properties.Rank);
 	}
-	function closePopup() {
-		e.layer.closePopup();
-		// $('.leaflet-popup').addClass('popupclose');
-// 		window.setTimeout(function(){
-// 			var elem = $('.leaflet-popup.popupclose').removeClass('popupopen popupclose').remove();
-// 			//e.layer.closePopup();
-// 		},400);
+	function closePopup(e) {
+		$('.leaflet-popup').addClass('popupclose');
+		window.setTimeout(function(){
+			$('.leaflet-popup').removeClass('popupclose');
+			e.layer.closePopup();
+		},200);
 	}
 
 	/** Tooltip Charts **/
@@ -249,6 +267,8 @@ $(function() {
 
 	/** Filter **/
 	function filterDataLayer(filter) {
+		$('#map').removeClass('spiderfied');
+		$('.marker').removeClass('spiderfied');
 		if (!fadeout) {
 			fadeout = true;
 			$('.marker').addClass('fadeout');

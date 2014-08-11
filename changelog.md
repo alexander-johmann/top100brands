@@ -22,6 +22,9 @@
 2014-07-01	IE11 compatibility
 2014-08-03	Local Map tiles, Marker & Popup tweaks
 2014-08-08	Map design update
+2014-08-10	Design tweaks (Marker)
+2014-08-11	Design tweaks (Marker, Popup)
+
 
 # Planned Features
 - MOBILE OVERFLOW
