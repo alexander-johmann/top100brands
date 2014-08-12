@@ -23,10 +23,8 @@
 2014-08-03	Local Map tiles, Marker & Popup tweaks
 2014-08-08	Map design update
 2014-08-10	Design tweaks (Marker)
-2014-08-11	Design tweaks (Marker, Popup)
-
+2014-08-11	Design tweaks (Marker, Popup, Map)
+2014-08-12	Bugfixing (Hash Navigation), Design tweaks, Logo graphics attribution
 
 # Planned Features
-- MOBILE OVERFLOW
--	Map Attribution
-- Windows Phone compatibility
+- 	Brand prominence
