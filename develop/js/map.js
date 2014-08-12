@@ -212,7 +212,6 @@ $(function() {
 	}
 
 	function bindLayerEvents() {
-
 		dataLayer.on('mouseover click', function(e) {
 			var $icon = $(e.layer._icon);
 			if ($icon.data('transition-status') === 'finished' || !$icon.hasClass('spiderfied')) {

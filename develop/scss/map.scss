@@ -497,6 +497,9 @@ h1 span span:before {
 	}
 
 }
+#nav div#navBar li#n10 {
+	display: none;
+}
 
 .chart {
 	margin-top: 25px;
@@ -625,9 +628,16 @@ h1 span span:before {
 	}
 }
 
-.custom-map .leaflet-control-zoom {
+.custom-map .leaflet-control-zoom.leaflet-bar {
 	margin-top: 70px;
 	margin-right: 20px;
+	background: rgba(0,0,0,0.2);
+	border-color: rgba(255,255,255,0.8);
+
+	a:hover {
+		background-color: rgba(255,255,255,0.8);
+		background-image: url('//api.tiles.mapbox.com/mapbox.js/v1.6.3/images/icons-000000.png');
+	}
 }
 
 .sharing {
