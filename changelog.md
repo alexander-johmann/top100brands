@@ -25,6 +25,8 @@
 2014-08-10	Design tweaks (Marker)
 2014-08-11	Design tweaks (Marker, Popup, Map)
 2014-08-12	Bugfixing (Hash Navigation), Design tweaks, Logo graphics attribution
+2014-08-17	Design tweaks (Popup)
+2014-08-18	Design tweaks (Popup)
 
 # Planned Features
 - 	Brand prominence

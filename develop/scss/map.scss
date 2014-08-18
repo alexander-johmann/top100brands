@@ -496,6 +496,13 @@ h1 span span:before {
 		}
 	}
 
+	.custom-map .#{$thisCategory} .leaflet-popup-content-wrapper {
+		border-color: rgba($thisColor, 1);
+	}
+	.custom-map .#{$thisCategory} .leaflet-popup-tip {
+		border-top-color: rgba($thisColor, 1);
+	}
+
 }
 #nav div#navBar li#n10 {
 	display: none;
@@ -527,6 +534,7 @@ h1 span span:before {
 
 .custom-map .leaflet-popup-content-wrapper {
 	background: rgba(255,255,255,0.9);
+	border: 2px solid rgba(255,255,255,1);
 	color: #333;
 	font-size: 16px;
 	line-height: 24px;
@@ -539,7 +547,7 @@ h1 span span:before {
 .custom-map .leaflet-popup-tip {
 	border-left: 15px solid transparent;
 	border-right: 15px solid transparent;
-	border-top: 15px solid rgba(255,255,255,0.9);
+	border-top: 15px solid rgba(255,255,255,1);
 }
 .custom-map .leaflet-popup-close-button {
 	display: none !important;

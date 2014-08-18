@@ -7,14 +7,23 @@ var map, dataLayer, countryLayer = [], fadeout = false;
 
 var colors = {
 	technology: '#3eb9e3',
+	technologyRGB: '62, 185, 227',
 	telecoms: '#ff8a54',
+	telecomsRGB: '255, 138, 84', 
 	retail: '#a7da4d',
+	retailRGB : '167, 218, 77',
 	fastfood: '#ef5b63',
+	fastfoodRGB: '239, 91, 99',
 	softdrinks: '#63a7af',
+	softdrinksRGB: '99, 167, 175',
 	cars: '#ec77dc',
+	carsRGB: '236, 119, 220',
 	globalbanks: '#a992ed',
+	globalbanksRGB: '169, 146, 237',
 	luxury: '#ffec7d',
-	oilandgas: '#d9a162'
+	luxuryRGB: '255, 236, 125',
+	oilandgas: '#d9a162',
+	oilandgasRGB: '217, 161, 98'
 };
 
 var charJSPersonalDefaultOptionsHorizontalBar = {
@@ -27,9 +36,9 @@ var charJSPersonalDefaultOptionsHorizontalBar = {
 	showYAxisMin: false,
 	xAxisBottom: false,
 	inGraphDataShow: true,
-	inGraphDataFontColor: '#FFF',
+	inGraphDataFontColor: '#000',
 	inGraphDataXPosition: 3,
-	inGraphDataPaddingX: -5,
+	inGraphDataPaddingX: -7,
 	inGraphDataAlign: 'right',
 	inGraphDataTmpl: 'M$ <%=v3%>',
 	inGraphDataFontFamily: "proxima-nova",
@@ -37,6 +46,7 @@ var charJSPersonalDefaultOptionsHorizontalBar = {
 	scaleFontColor: '#666',
 	scaleFontFamily: 'inconsolata',
 	scaleFontSize: 14,
+	animation: false
 };
 
 function is_touch_device() {
@@ -172,11 +182,14 @@ $(function() {
 
 	/** Tooltips **/
 	var chartData = [];
+	var chartOptions = [];
 	function tooltips() {
 		unBindLayerEvents();
 		dataLayer.eachLayer(function(layer) {
+			var brand = layer.feature.properties.Brand.replace(/ /g,'').toLowerCase();
+			var category = layer.feature.properties.Category.replace(/ /g,'').toLowerCase();
 			var content =
-				'<div class="img"><img src="images/logos/' + layer.feature.properties.Brand.replace(/ /g,'').toLowerCase() + '.svg" alt="' + layer.feature.properties.Brand + '" /></div>' +
+				'<div class="img"><img src="images/logos/' + brand + '.svg" alt="' + layer.feature.properties.Brand + '" /></div>' +
 				'<div class="info">' +
 					'<div class="left">' +
 						'<div class="headline">Brand Value</div>' +
@@ -195,12 +208,20 @@ $(function() {
 				'</div>' +
 				'<canvas id="chart-' + layer.feature.properties.Rank + '" class="chart" width="200" height="120"></canvas';
 			layer.bindPopup(content, {
-				closeButton: false
+				closeButton: false,
+				className: category
 			});
+			var color = 'rgba(33,33,33,.9)';
+			if (colors[category]) color = 'rgba(' + colors[category+'RGB'] + ',.9)';
+			var textColor = '#FFF';
+			if (category == 'luxury') textColor = '#000';
+			chartOptions[layer.feature.properties.Rank] = {
+				inGraphDataFontColor: textColor
+			};
 			chartData[layer.feature.properties.Rank] = {
 				labels: ['2010','2011','2012','2013','2014'],
 				datasets: [{
-					fillColor: 'rgba(33,33,33,0.5)',
+					fillColor: color,
 					strokeColor: 'rgba(0,0,0,0)',
 					data: [layer.feature.properties.Value2010,layer.feature.properties.Value2011,layer.feature.properties.Value2012,layer.feature.properties.Value2013,layer.feature.properties.Value]
 				}]
@@ -218,7 +239,6 @@ $(function() {
 				openPopup(e);
 			}
 		});
-
 		dataLayer.on('mouseout', function(e) {
 			closePopup(e);
 		});
@@ -242,7 +262,6 @@ $(function() {
 		var $popup = $('.leaflet-popup');
 		var $popupHtml = '<div class="popup-container">' + $popup.html() + '</div>';
 		$popup.html($popupHtml);
-
 		generateChart(e.layer.feature.properties.Rank);
 	}
 	function closePopup(e) {
@@ -261,7 +280,7 @@ $(function() {
 		chart[chartnr] = new Chart(ctx[chartnr]);
 		$('#chart-'+chartnr)[0].width = 200;
 		$('#chart-'+chartnr)[0].height = 120;
-		chart[chartnr].HorizontalBar(chartData[chartnr]);
+		chart[chartnr].HorizontalBar(chartData[chartnr],chartOptions[chartnr]);
 	}
 
 	/** Filter **/
