@@ -27,6 +27,10 @@
 2014-08-12	Bugfixing (Hash Navigation), Design tweaks, Logo graphics attribution
 2014-08-17	Design tweaks (Popup)
 2014-08-18	Design tweaks (Popup)
+2014-08-21	Sources
 
 # Planned Features
 - 	Brand prominence
+- 	Brand comparison
+- 	Top brands per country
+- 	Top brands per category as table/chart
