@@ -83,7 +83,7 @@ a {
 		background: rgba(#000,0.7);
 
 		&#curtaintop {
-			display: none;
+			//display: none;
 			top: 0;
 			bottom: auto;
 			background: rgba(#000,0.6);
@@ -112,8 +112,9 @@ a {
 			padding: 10px 25px;
 			font-size: 80px;
 			font-weight: 300;
-			/*text-shadow: 2px 2px 0 #666, 3px 3px 0 #FFF;
-			box-shadow: 2px 2px 0 #999, 3px 3px 0 #FFF;*/
+			/*text-shadow: 2px 2px 0 #666, 3px 3px 0 #FFF;*/
+			/*box-shadow: 2px 2px 0 #999, 3px 3px 0 #FFF;*/
+			box-shadow: 0 0 15px 0 rgba(255,255,255,0.5);
 			color: rgba(255,255,255,.8);
 			white-space: nowrap;
 			@include transition (all .3s ease-in-out);
@@ -325,6 +326,7 @@ h1 span span:before {
 
 	p, li {
 		color: #333;
+		text-shadow: 1px 1px 0 #EEE;
 	}
 	p {
 		margin: 0 0 15px 0;
@@ -357,7 +359,6 @@ h1 span span:before {
 		font-size: 22px;
 		line-height: 1.4;
 		font-weight: 400;
-		text-shadow: 1px 1px 0 #EEE;
 
 		a {
 			background-position: 0 21px;
@@ -500,7 +501,8 @@ h1 span span:before {
 		border-color: rgba($thisColor, 1);
 	}
 	.custom-map .#{$thisCategory} .leaflet-popup-tip {
-		border-top-color: rgba($thisColor, 1);
+		//border-top-color: rgba($thisColor, 1);
+		background-color: rgba($thisColor, 1);
 	}
 
 }
@@ -539,15 +541,27 @@ h1 span span:before {
 	font-size: 16px;
 	line-height: 24px;
 	min-width: 240px;
+	box-shadow: 0 1px 5px 0 rgba(33,33,33,0.5);
 }
 .custom-map .leaflet-popup-tip-container {
 	width:30px;
-	height:15px;
+	height:20px;
+	overflow: hidden;
 }
 .custom-map .leaflet-popup-tip {
-	border-left: 15px solid transparent;
-	border-right: 15px solid transparent;
-	border-top: 15px solid rgba(255,255,255,1);
+	//border-left: 15px solid transparent;
+	//border-right: 15px solid transparent;
+	//border-top: 15px solid rgba(255,255,255,1);
+	border: none;
+	width: 30px;
+	height: 30px;
+	border-radius: 3px;
+	-moz-transform: rotate(45deg);
+	-webkit-transform: rotate(45deg);
+	transform: rotate(45deg);
+	box-shadow: 1px 1px 5px 0 rgba(33,33,33,0.5);
+	margin: -21px auto 0 auto;
+	background-color: #FFF;
 }
 .custom-map .leaflet-popup-close-button {
 	display: none !important;

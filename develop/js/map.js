@@ -105,14 +105,19 @@ $(function() {
 	canvasNext.stroke();
 
 	/** Map Close Popup Hack**/
+	var openPopupId = 0;
 	L.Map = L.Map.extend({
 		openPopup: function(popup) {
-			this.closePopup();
-			//closePopup();
-			this._popup = popup;
-			return this.addLayer(popup).fire('popupopen', {
-				popup: this._popup
-			});
+			//console.log(openPopupId + ", " + popup._leaflet_id);
+			//if (openPopupId != popup._leaflet_id) {
+				this.closePopup();
+				//closePopup();
+				this._popup = popup;
+				//openPopupId = popup._leaflet_id;
+				return this.addLayer(popup).fire('popupopen', {
+					popup: this._popup
+				});
+			//}
 		}
 	});
 
@@ -240,7 +245,7 @@ $(function() {
 			}
 		});
 		dataLayer.on('mouseout', function(e) {
-			closePopup(e);
+			//closePopup(e);
 		});
 	}	
 	function unBindLayerEvents() {
@@ -265,11 +270,10 @@ $(function() {
 		generateChart(e.layer.feature.properties.Rank);
 	}
 	function closePopup(e) {
-		$('.leaflet-popup').addClass('popupclose');
+		/*$('.leaflet-popup').addClass('popupclose');
 		window.setTimeout(function(){
 			$('.leaflet-popup').removeClass('popupclose');
-			e.layer.closePopup();
-		},200);
+		},200);*/
 	}
 
 	/** Tooltip Charts **/

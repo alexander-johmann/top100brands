@@ -28,6 +28,7 @@
 2014-08-17	Design tweaks (Popup)
 2014-08-18	Design tweaks (Popup)
 2014-08-21	Sources
+2015-04-05	Design tweaks
 
 # Planned Features
 - 	Brand prominence
