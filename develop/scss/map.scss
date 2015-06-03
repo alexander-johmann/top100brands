@@ -632,7 +632,8 @@ h1 span span:before {
 	font-size: 22px;
 	line-height: 44px;
 	font-weight: 400;
-	background: rgba(255,255,255,0.2);
+	background: #333; //rgba(255,255,255,0.2);
+	color: rgba(255,255,255,1);
 	padding-left: 3px;
 }
 
