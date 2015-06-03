@@ -46,7 +46,8 @@ var charJSPersonalDefaultOptionsHorizontalBar = {
 	scaleFontColor: '#666',
 	scaleFontFamily: 'inconsolata',
 	scaleFontSize: 14,
-	animation: false
+	animation: true,
+	responsive: true
 };
 
 function is_touch_device() {
@@ -211,7 +212,7 @@ $(function() {
 						'<div class="rank">' + layer.feature.properties.Rank2015 + '.</div>' +
 					'</div>' +
 				'</div>' +
-				'<canvas id="chart-' + layer.feature.properties.Rank2015 + '" class="chart" width="200" height="120"></canvas';
+				'<div class="chart"><canvas id="chart-' + layer.feature.properties.Rank2015 + '"></canvas></div>';
 			layer.bindPopup(content, {
 				closeButton: false,
 				className: category
@@ -282,8 +283,8 @@ $(function() {
 	function generateChart(chartnr) {
 		ctx[chartnr] = $('#chart-'+chartnr).get(0).getContext("2d");
 		chart[chartnr] = new Chart(ctx[chartnr]);
-		$('#chart-'+chartnr)[0].width = 200;
-		$('#chart-'+chartnr)[0].height = 120;
+		//$('#chart-'+chartnr)[0].width = 180;
+		//$('#chart-'+chartnr)[0].height = 120;
 		chart[chartnr].HorizontalBar(chartData[chartnr],chartOptions[chartnr]);
 	}
 
