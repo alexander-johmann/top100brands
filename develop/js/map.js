@@ -201,17 +201,17 @@ $(function() {
 						'<div class="value">' +
 							'<div class="currency">$</div>' +
 							'<div class="number">' +
-								'<div>' + layer.feature.properties.Value.toString().replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1,") + '</div>' +
+								'<div>' + layer.feature.properties.Value2015.toString().replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1,") + '</div>' +
 								'<div class="unit">Million</div>' +
 							'</div>' +
 						'</div>' +
 					'</div>' +
 					'<div class="right">' +
-						'<div class="headline">Rank \'14</div>' +
-						'<div class="rank">' + layer.feature.properties.Rank + '.</div>' +
+						'<div class="headline">Rank \'15</div>' +
+						'<div class="rank">' + layer.feature.properties.Rank2015 + '.</div>' +
 					'</div>' +
 				'</div>' +
-				'<canvas id="chart-' + layer.feature.properties.Rank + '" class="chart" width="200" height="120"></canvas';
+				'<canvas id="chart-' + layer.feature.properties.Rank2015 + '" class="chart" width="200" height="120"></canvas';
 			layer.bindPopup(content, {
 				closeButton: false,
 				className: category
@@ -220,15 +220,15 @@ $(function() {
 			if (colors[category]) color = 'rgba(' + colors[category+'RGB'] + ',.9)';
 			var textColor = '#FFF';
 			if (category == 'luxury') textColor = '#000';
-			chartOptions[layer.feature.properties.Rank] = {
+			chartOptions[layer.feature.properties.Rank2015] = {
 				inGraphDataFontColor: textColor
 			};
-			chartData[layer.feature.properties.Rank] = {
-				labels: ['2010','2011','2012','2013','2014'],
+			chartData[layer.feature.properties.Rank2015] = {
+				labels: ['2010','2011','2012','2013','2014','2015'],
 				datasets: [{
 					fillColor: color,
 					strokeColor: 'rgba(0,0,0,0)',
-					data: [layer.feature.properties.Value2010,layer.feature.properties.Value2011,layer.feature.properties.Value2012,layer.feature.properties.Value2013,layer.feature.properties.Value]
+					data: [layer.feature.properties.Value2010,layer.feature.properties.Value2011,layer.feature.properties.Value2012,layer.feature.properties.Value2013,layer.feature.properties.Value2014,layer.feature.properties.Value2015]
 				}]
 			};
 		});
@@ -267,7 +267,7 @@ $(function() {
 		var $popup = $('.leaflet-popup');
 		var $popupHtml = '<div class="popup-container">' + $popup.html() + '</div>';
 		$popup.html($popupHtml);
-		generateChart(e.layer.feature.properties.Rank);
+		generateChart(e.layer.feature.properties.Rank2015);
 	}
 	function closePopup(e) {
 		/*$('.leaflet-popup').addClass('popupclose');
