@@ -30,7 +30,7 @@ module.exports = (grunt) ->
         ]
         options:
           style: "<%= grunt.config.get('sassOutputStyle') %>"
-          loadPath: [require('node-bourbon').includePaths]
+          loadPath: require('bourbon').includePaths
 
     coffee:
       compile:

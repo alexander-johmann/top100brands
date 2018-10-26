@@ -1,9 +1,9 @@
 /******************************************
-*		TOP 100 BRANDS												*
-*		Alexander Johmann, 2014								*
+* TOP 100 BRANDS                          *
+* Alexander Johmann, 2014-2018            *
 ******************************************/
 
-$categories: (all, technology, telecoms, retail, fastfood, softdrinks, cars, globalbanks, luxury, oilandgas);
+$categories: (all, technology, telecoms, retail, food, apparel, cars, finance, luxury, oilandgas);
 $colors: (#FFFFFF, #3eb9e3, #ff8a54, #a7da4d, #ef5b63, #63a7af, #ec77dc, #a992ed, #ffec7d, #d9a162);
 $textcolors: (#000, #000, #000, #000, #000, #000, #000, #000, #000, #000);
 
@@ -18,7 +18,7 @@ body {
 	margin: 0;
 	padding: 0;
 	font-family: "proxima-nova",sans-serif;
-	@include linear-gradient(#ccc 30%, #EEE);
+	background: linear-gradient(#ccc 30%, #EEE);
 	background-attachment: fixed;
 	overflow: hidden;
 	-ms-overflow-style: none;
@@ -81,12 +81,14 @@ a {
 		z-index: 1;
 		@include position(fixed, auto 0 0 0);
 		background: rgba(#000,0.7);
+		-webkit-backdrop-filter: blur(10px);
 
 		&#curtaintop {
 			//display: none;
 			top: 0;
 			bottom: auto;
 			background: rgba(#000,0.6);
+			-webkit-backdrop-filter: blur(5px);
 		}
 	}
 }
@@ -100,7 +102,7 @@ a {
 		margin-top: -100px;
 		text-align: center;
 		z-index: 2;
-		@include animation (fadein 3s ease-in-out);
+		animation: fadein 3s ease-in-out;
 		background: transparent;
 
 		> span {
@@ -117,7 +119,7 @@ a {
 			box-shadow: 0 0 15px 0 rgba(255,255,255,0.5);
 			color: rgba(255,255,255,.8);
 			white-space: nowrap;
-			@include transition (all .3s ease-in-out);
+			transition: all .3s ease-in-out;
 			background: rgba(0,0,0,.2);;
 		}
 	}
@@ -127,7 +129,7 @@ a {
 		@include position(fixed, 50% none none none);
 		margin-top: 70px;
 		z-index: 2;
-		@include animation (fadein 3s ease-in-out);
+		animation: fadein 3s ease-in-out;
 		color: rgba(255,255,255,.9);
 		font-weight: 100;
 		font-size: 30px;
@@ -162,7 +164,7 @@ h1 span span:before {
 	margin: -20px 0 0 -50px;
 	z-index: 2;
 	canvas {
-		@include animation (fadein 2s ease-in-out, blink 2s ease-in-out 4s infinite);
+		animation: fadein 2s ease-in-out, blink 2s ease-in-out 4s infinite;
 	}
 	&:hover {
 		canvas {
@@ -178,11 +180,11 @@ h1 span span:before {
 	height: 40px;
 	z-index: 2;
 	canvas {
-		@include animation (fadein 3s ease-in-out, blink 2s ease-in-out 4s infinite);
+		animation: fadein 3s ease-in-out, blink 2s ease-in-out 4s infinite;
 	}
 }
 
-@include keyframes (blink) {
+@keyframes (blink) {
 	0% {
 		opacity: 1;
 	}
@@ -228,7 +230,7 @@ h1 span span:before {
 				background-position: 0 0px;
 				font-size: 14px;
 				font-weight: 300;
-				@include transition (background-position .2s ease-in-out);
+				transition: background-position .2s ease-in-out;
 			}
 		}
 	}
@@ -246,12 +248,12 @@ h1 span span:before {
 	}
 	#scrollPrev {
 		@include position(absolute, 0 none none 0);
-		@include linear-gradient(to right, #333, rgba(#333, .4));
+		background: linear-gradient(to right, #333, rgba(#333, .4));
 		background-color: transparent;
 	}
 	#scrollNext {
 		@include position(absolute, 0 0 none none);
-		@include linear-gradient(to left, #333, rgba(#333, .4));
+		background: linear-gradient(to left, #333, rgba(#333, .4));
 		background-color: transparent;
 	}
 	#scrollPrev.active,
@@ -268,11 +270,11 @@ h1 span span:before {
 	color: #fff;
 	margin-right: 25px;
 	display: inline-block;
-	@include transition (color .2s ease-in-out);
+	transition: color .2s ease-in-out;
 
 	&:hover {
 		color: darken(#fff, 20%);
-		@include transition (color .3s ease-in-out);
+		transition: color .3s ease-in-out;
 	}
 
 }
@@ -308,8 +310,8 @@ h1 span span:before {
 	}
 
 	div {
-		@include columns(2);
-		@include column-gap(30px);
+		columns: 2;
+		column-gap: 30px;
 		max-width: 1000px;
 		margin: 0 auto;
 		padding-right: 10px;
@@ -342,15 +344,15 @@ h1 span span:before {
 	}
 
 	a {
-		@include linear-gradient(to bottom, rgba(255,255,255,0) 50%, rgba(0,0,0,0.3) 50%);
+		background: linear-gradient(to bottom, rgba(255,255,255,0) 50%, rgba(0,0,0,0.3) 50%);
 		background-repeat: repeat-x;
 		background-size: 2px 2px;
 		background-position: 0 16px;
-		@include transition (color .2s ease-in-out);
+		transition: color .2s ease-in-out;
 
 		&:hover {
 			color: darken(#e91a6d, 10%);
-			@include transition (color .3s ease-in-out);
+			transition: color .3s ease-in-out;
 		}
 
 	}
@@ -381,7 +383,7 @@ h1 span span:before {
 
 .marker {
 	border-radius: 100%;
-	@include transition(transform .3s ease-in-out);
+	transition: transform .3s ease-in-out;
 
 	&:hover {
 		z-index: 9999 !important;
@@ -394,26 +396,26 @@ h1 span span:before {
 		width: 100%;
 		height: 100%;
 		opacity: 1;
-		@include animation(bouncein .4s ease-out);
-		@include transition(opacity .2s ease-in-out);
+		animation: bouncein .4s ease-out;
+		transition: opacity .2s ease-in-out;
 
 		&:hover {
 			background: rgba(255,255,255,1);
-			@include transition(background .3s ease-in-out);
+			transition: background .3s ease-in-out;
 		}
 	}
 }
 
 .marker.fadeout {
-	@include animation (fadeout .2s ease-in-out);
+	animation: fadeout .2s ease-in-out;
 }
 
 #map.spiderfied .marker:not(.spiderfied) .markerInner {
 	opacity: .5;
-	@include transition(opacity .3s ease-in-out);
+	transition: opacity .3s ease-in-out;
 }
 
-@include keyframes (fadein) {
+@keyframes fadein {
 	from {
 		opacity: 0;
 	}
@@ -421,7 +423,7 @@ h1 span span:before {
 		opacity: 1;
 	}
 }
-@include keyframes (fadeout) {
+@keyframes fadeout {
 	from {
 		opacity: 1;
 	}
@@ -430,47 +432,47 @@ h1 span span:before {
 	}
 }
 
-@include keyframes (bouncein) {
+@keyframes bouncein {
 	0% {
-		@include transform (scale(0));
+		transform: scale(0);
 	}
 	80% {
-		@include transform (scale(1.2));
+		transform: scale(1.2);
 	}
 	100% {
-		@include transform (scale(1));
+		transform: scale(1);
 	}
 }
 
-@include keyframes (flipin) {
+@keyframes flipin {
 	from {
-		@include transform (rotateY(90deg));
+		transform: rotateY(90deg);
 	}
 	to {
-		@include transform (rotateY(0deg));
+		transform: rotateY(0deg);
 	}
 }
-@include keyframes (flipout) {
+@keyframes flipout {
 	from {
-		@include transform (rotateY(0deg));
+		transform: rotateY(0deg);
 	}
 	to {
-		@include transform (rotateY(-90deg));
+		transform: rotateY(-90deg);
 	}
 }
 
 @for $i from 0 through 9 {
 	$thisCategory: unquote(nth($categories, $i+1));
-	$thisColor: unquote(nth($colors, $i+1));
-	$thisTextColor: unquote(nth($textcolors, $i+1));
+	$thisColor: nth($colors, $i+1);
+	$thisTextColor: nth($textcolors, $i+1);
 
 	#nav div#navBar li#n#{$i} {
 		border-color: $thisColor;
-		@include linear-gradient(transparent 50%, lighten($thisColor, 10%) 50%, $thisColor 100%);
+		background-image: linear-gradient(transparent 50%, lighten($thisColor, 10%) 50%, $thisColor 100%);
 		&:hover,
 		&.active {
 			background-position: 0 -50px;
-			@include transition (background-position .3s ease-in-out);
+			transition: background-position .3s ease-in-out;
 		}
 		a {
 			color: #FFF;
@@ -482,7 +484,7 @@ h1 span span:before {
 		&:hover a,
 		&.active a {
 			color: $thisTextColor;
-			@include transition (color .3s linear);
+			transition: color .3s linear;
 		}
 	}
 
@@ -511,9 +513,9 @@ h1 span span:before {
 }
 
 .chart {
-	margin-top: 25px;
+	margin: 10px 0 0 0;
 	width: 250px;
-	height: 140px;
+	height: 160px;
 }
 
 .custom-map.leaflet-container {
@@ -526,12 +528,12 @@ h1 span span:before {
 	opacity: 1 !important;
 
 	.popup-container {
-		@include animation(flipin .4s ease-in-out, fadein .4s ease-in-out);
+		animation: flipin .4s ease-in-out, fadein .4s ease-in-out;
 	}
 
 	&.popupclose {
 		.popup-container {
-			@include animation(flipout .2s ease-in-out, fadeout .2s ease-in-out);
+			animation: flipout .2s ease-in-out, fadeout .2s ease-in-out;
 		}
 	}
 }
@@ -591,8 +593,8 @@ h1 span span:before {
 	width: auto;
 	height: auto;
 	max-width: 160px;
-	max-height: 100px;
-	margin: 20px;
+	max-height: 80px;
+	margin: 10px;
 }
 
 .custom-map .leaflet-popup-content-wrapper .headline {
@@ -644,10 +646,10 @@ h1 span span:before {
 	stroke-opacity: .3;
 	stroke-dasharray: 100;
 	stroke-dashoffset: 100;
-	@include animation (stroke .4s ease-in-out forwards);
+	animation: stroke .4s ease-in-out forwards;
 }
 
-@include keyframes (stroke) {
+@keyframes stroke {
 	to {
 		stroke-dashoffset: 0;
 	}
@@ -736,7 +738,7 @@ h1 span span:before {
 
 	#info {
 		div {
-			@include columns(1);
+			columns: 1;
 		}
 
 	}

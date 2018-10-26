@@ -30,6 +30,7 @@
 2014-08-21	Sources
 2015-04-05	Design tweaks
 2015-06-03	2015 data update, design tweaks, retina charts
+2018-10-26	Data updated for 2016, 2017 and 2018, small design tweeks/fixes
 
 # Planned Features
 - 	Brand prominence

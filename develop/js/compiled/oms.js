@@ -8,12 +8,12 @@ Note: The Leaflet maps API must be included *before* this code
 
 
 /*	Patched by Alexander Johmann
-		 *aj
+		#aj
  */
 
 (function() {
-  var __hasProp = {}.hasOwnProperty,
-    __slice = [].slice;
+  var hasProp = {}.hasOwnProperty,
+    slice = [].slice;
 
   if (this['L'] == null) {
     return;
@@ -52,21 +52,21 @@ Note: The Leaflet maps API must be included *before* this code
     };
 
     function _Class(map, opts) {
-      var e, k, v, _i, _len, _ref;
+      var e, j, k, len, ref, v;
       this.map = map;
       if (opts == null) {
         opts = {};
       }
       for (k in opts) {
-        if (!__hasProp.call(opts, k)) continue;
+        if (!hasProp.call(opts, k)) continue;
         v = opts[k];
         this[k] = v;
       }
       this.initMarkerArrays();
       this.listeners = {};
-      _ref = ['zoomend'];
-      for (_i = 0, _len = _ref.length; _i < _len; _i++) {
-        e = _ref[_i];
+      ref = ['zoomend'];
+      for (j = 0, len = ref.length; j < len; j++) {
+        e = ref[j];
         this.map.addEventListener(e, (function(_this) {
           return function() {
             return _this['unspiderfy']();
@@ -118,11 +118,11 @@ Note: The Leaflet maps API must be included *before* this code
     };
 
     p['clearMarkers'] = function() {
-      var i, marker, markerListener, _i, _len, _ref;
+      var i, j, len, marker, markerListener, ref;
       this['unspiderfy']();
-      _ref = this.markers;
-      for (i = _i = 0, _len = _ref.length; _i < _len; i = ++_i) {
-        marker = _ref[i];
+      ref = this.markers;
+      for (i = j = 0, len = ref.length; j < len; i = ++j) {
+        marker = ref[i];
         markerListener = this.markerListeners[i];
         marker.removeEventListener('click', markerListener);
         delete marker['_oms'];
@@ -132,8 +132,8 @@ Note: The Leaflet maps API must be included *before* this code
     };
 
     p['addListener'] = function(event, func) {
-      var _base;
-      ((_base = this.listeners)[event] != null ? _base[event] : _base[event] = []).push(func);
+      var base;
+      ((base = this.listeners)[event] != null ? base[event] : base[event] = []).push(func);
       return this;
     };
 
@@ -152,46 +152,46 @@ Note: The Leaflet maps API must be included *before* this code
     };
 
     p.trigger = function() {
-      var args, event, func, _i, _len, _ref, _ref1, _results;
-      event = arguments[0], args = 2 <= arguments.length ? __slice.call(arguments, 1) : [];
-      _ref1 = (_ref = this.listeners[event]) != null ? _ref : [];
-      _results = [];
-      for (_i = 0, _len = _ref1.length; _i < _len; _i++) {
-        func = _ref1[_i];
-        _results.push(func.apply(null, args));
+      var args, event, func, j, len, ref, ref1, results;
+      event = arguments[0], args = 2 <= arguments.length ? slice.call(arguments, 1) : [];
+      ref1 = (ref = this.listeners[event]) != null ? ref : [];
+      results = [];
+      for (j = 0, len = ref1.length; j < len; j++) {
+        func = ref1[j];
+        results.push(func.apply(null, args));
       }
-      return _results;
+      return results;
     };
 
     p.generatePtsCircle = function(count, centerPt) {
-      var angle, angleStep, circumference, i, legLength, _i, _results;
+      var angle, angleStep, circumference, i, j, legLength, ref, results;
       circumference = this['circleFootSeparation'] * (2 + count);
       legLength = circumference / twoPi;
       angleStep = twoPi / count;
-      _results = [];
-      for (i = _i = 0; 0 <= count ? _i < count : _i > count; i = 0 <= count ? ++_i : --_i) {
+      results = [];
+      for (i = j = 0, ref = count; 0 <= ref ? j < ref : j > ref; i = 0 <= ref ? ++j : --j) {
         angle = this['circleStartAngle'] + i * angleStep;
-        _results.push(new L.Point(centerPt.x + legLength * Math.cos(angle), centerPt.y + legLength * Math.sin(angle)));
+        results.push(new L.Point(centerPt.x + legLength * Math.cos(angle), centerPt.y + legLength * Math.sin(angle)));
       }
-      return _results;
+      return results;
     };
 
     p.generatePtsSpiral = function(count, centerPt) {
-      var angle, i, legLength, pt, _i, _results;
+      var angle, i, j, legLength, pt, ref, results;
       legLength = this['spiralLengthStart'];
       angle = 0;
-      _results = [];
-      for (i = _i = 0; 0 <= count ? _i < count : _i > count; i = 0 <= count ? ++_i : --_i) {
+      results = [];
+      for (i = j = 0, ref = count; 0 <= ref ? j < ref : j > ref; i = 0 <= ref ? ++j : --j) {
         angle += this['spiralFootSeparation'] / legLength + i * 0.0005;
         pt = new L.Point(centerPt.x + legLength * Math.cos(angle), centerPt.y + legLength * Math.sin(angle));
         legLength += twoPi * this['spiralLengthFactor'] / angle;
-        _results.push(pt);
+        results.push(pt);
       }
-      return _results;
+      return results;
     };
 
     p.spiderListener = function(marker) {
-      var m, mPt, markerPt, markerSpiderfied, nearbyMarkerData, nonNearbyMarkers, pxSq, _i, _len, _ref;
+      var j, len, m, mPt, markerPt, markerSpiderfied, nearbyMarkerData, nonNearbyMarkers, pxSq, ref;
       markerSpiderfied = marker['_omsData'] != null;
       if (!(markerSpiderfied && this['keepSpiderfied'])) {
         this['unspiderfy']();
@@ -203,9 +203,9 @@ Note: The Leaflet maps API must be included *before* this code
         nonNearbyMarkers = [];
         pxSq = this['nearbyDistance'] * this['nearbyDistance'];
         markerPt = this.map.latLngToLayerPoint(marker.getLatLng());
-        _ref = this.markers;
-        for (_i = 0, _len = _ref.length; _i < _len; _i++) {
-          m = _ref[_i];
+        ref = this.markers;
+        for (j = 0, len = ref.length; j < len; j++) {
+          m = ref[j];
           if (!this.map.hasLayer(m)) {
             continue;
           }
@@ -251,20 +251,20 @@ Note: The Leaflet maps API must be included *before* this code
       this.spiderfying = true;
       numFeet = markerData.length;
       bodyPt = this.ptAverage((function() {
-        var _i, _len, _results;
-        _results = [];
-        for (_i = 0, _len = markerData.length; _i < _len; _i++) {
-          md = markerData[_i];
-          _results.push(md.markerPt);
+        var j, len, results;
+        results = [];
+        for (j = 0, len = markerData.length; j < len; j++) {
+          md = markerData[j];
+          results.push(md.markerPt);
         }
-        return _results;
+        return results;
       })());
       footPts = numFeet >= this['circleSpiralSwitchover'] ? this.generatePtsSpiral(numFeet, bodyPt).reverse() : this.generatePtsCircle(numFeet, bodyPt);
       spiderfiedMarkers = (function() {
-        var _i, _len, _results;
-        _results = [];
-        for (_i = 0, _len = footPts.length; _i < _len; _i++) {
-          footPt = footPts[_i];
+        var j, len, results;
+        results = [];
+        for (j = 0, len = footPts.length; j < len; j++) {
+          footPt = footPts[j];
           footLl = this.map.layerPointToLatLng(footPt);
           nearestMarkerDatum = this.minExtract(markerData, (function(_this) {
             return function(md) {
@@ -292,9 +292,9 @@ Note: The Leaflet maps API must be included *before* this code
           marker.setZIndexOffset(100);
           marker._icon.className += ' spiderfied';
           $('#map').addClass('spiderfied');
-          _results.push(marker);
+          results.push(marker);
         }
-        return _results;
+        return results;
       }).call(this);
       delete this.spiderfying;
       this.spiderfied = true;
@@ -302,7 +302,7 @@ Note: The Leaflet maps API must be included *before* this code
     };
 
     p['unspiderfy'] = function(markerNotToMove) {
-      var marker, mhl, nonNearbyMarkers, unspiderfiedMarkers, _i, _len, _ref;
+      var j, len, marker, mhl, nonNearbyMarkers, ref, unspiderfiedMarkers;
       if (markerNotToMove == null) {
         markerNotToMove = null;
       }
@@ -314,9 +314,9 @@ Note: The Leaflet maps API must be included *before* this code
       nonNearbyMarkers = [];
       $('#map').removeClass('spiderfied');
       $('.marker').removeClass('spiderfied').data('transition-status', 'deleted');
-      _ref = this.markers;
-      for (_i = 0, _len = _ref.length; _i < _len; _i++) {
-        marker = _ref[_i];
+      ref = this.markers;
+      for (j = 0, len = ref.length; j < len; j++) {
+        marker = ref[j];
         if (marker['_omsData'] != null) {
           this.map.removeLayer(marker['_omsData'].leg);
           if (marker !== markerNotToMove) {
@@ -348,10 +348,10 @@ Note: The Leaflet maps API must be included *before* this code
     };
 
     p.ptAverage = function(pts) {
-      var numPts, pt, sumX, sumY, _i, _len;
+      var j, len, numPts, pt, sumX, sumY;
       sumX = sumY = 0;
-      for (_i = 0, _len = pts.length; _i < _len; _i++) {
-        pt = pts[_i];
+      for (j = 0, len = pts.length; j < len; j++) {
+        pt = pts[j];
         sumX += pt.x;
         sumY += pt.y;
       }
@@ -360,8 +360,8 @@ Note: The Leaflet maps API must be included *before* this code
     };
 
     p.minExtract = function(set, func) {
-      var bestIndex, bestVal, index, item, val, _i, _len;
-      for (index = _i = 0, _len = set.length; _i < _len; index = ++_i) {
+      var bestIndex, bestVal, index, item, j, len, val;
+      for (index = j = 0, len = set.length; j < len; index = ++j) {
         item = set[index];
         val = func(item);
         if ((typeof bestIndex === "undefined" || bestIndex === null) || val < bestVal) {
@@ -373,11 +373,11 @@ Note: The Leaflet maps API must be included *before* this code
     };
 
     p.arrIndexOf = function(arr, obj) {
-      var i, o, _i, _len;
+      var i, j, len, o;
       if (arr.indexOf != null) {
         return arr.indexOf(obj);
       }
-      for (i = _i = 0, _len = arr.length; _i < _len; i = ++_i) {
+      for (i = j = 0, len = arr.length; j < len; i = ++j) {
         o = arr[i];
         if (o === obj) {
           return i;

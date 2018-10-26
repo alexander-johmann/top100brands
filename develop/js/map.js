@@ -1,6 +1,6 @@
 /******************************************
-*		TOP 100 BRANDS												*
-*		Alexander Johmann, 2014								*
+* TOP 100 BRANDS                          *
+* Alexander Johmann, 2014-2018            *
 ******************************************/
 
 var map, dataLayer, countryLayer = [], fadeout = false;
@@ -27,15 +27,10 @@ var colors = {
 };
 
 var charJSPersonalDefaultOptionsHorizontalBar = {
-	graphMin: 0,
 	barStrokeWidth: 0,
 	barValueSpacing: 0,
-	barDatasetSpacing: 1,
-	scaleShowGridLines: false,
-	scaleShowLine: false,
-	showYAxisMin: false,
-	xAxisBottom: false,
 	inGraphDataShow: true,
+	xAxisBottom: false,
 	inGraphDataFontColor: '#000',
 	inGraphDataXPosition: 3,
 	inGraphDataPaddingX: -7,
@@ -46,8 +41,15 @@ var charJSPersonalDefaultOptionsHorizontalBar = {
 	scaleFontColor: '#666',
 	scaleFontFamily: 'inconsolata',
 	scaleFontSize: 14,
+	barDatasetSpacing: 1,
+	responsive: true,
+	graphMin: 0,
+	scaleShowGridLines: false,
+	scaleShowLine: false,
+	showYAxisMin: false,
 	animation: true,
-	responsive: true
+	yAxisRight: false,
+	maintainAspectRatio: false,
 };
 
 function is_touch_device() {
@@ -202,17 +204,17 @@ $(function() {
 						'<div class="value">' +
 							'<div class="currency">$</div>' +
 							'<div class="number">' +
-								'<div>' + layer.feature.properties.Value2015.toString().replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1,") + '</div>' +
+								'<div>' + layer.feature.properties.Value2018.toString().replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1,") + '</div>' +
 								'<div class="unit">Million</div>' +
 							'</div>' +
 						'</div>' +
 					'</div>' +
 					'<div class="right">' +
-						'<div class="headline">Rank \'15</div>' +
-						'<div class="rank">' + layer.feature.properties.Rank2015 + '.</div>' +
+						'<div class="headline">Rank \'18</div>' +
+						'<div class="rank">' + layer.feature.properties.Rank2018 + '.</div>' +
 					'</div>' +
 				'</div>' +
-				'<div class="chart"><canvas id="chart-' + layer.feature.properties.Rank2015 + '"></canvas></div>';
+				'<div class="chart"><canvas id="chart-' + layer.feature.properties.Rank2018 + '"></canvas></div>';
 			layer.bindPopup(content, {
 				closeButton: false,
 				className: category
@@ -221,15 +223,15 @@ $(function() {
 			if (colors[category]) color = 'rgba(' + colors[category+'RGB'] + ',.9)';
 			var textColor = '#FFF';
 			if (category == 'luxury') textColor = '#000';
-			chartOptions[layer.feature.properties.Rank2015] = {
+			chartOptions[layer.feature.properties.Rank2018] = {
 				inGraphDataFontColor: textColor
 			};
-			chartData[layer.feature.properties.Rank2015] = {
-				labels: ['2010','2011','2012','2013','2014','2015'],
+			chartData[layer.feature.properties.Rank2018] = {
+				labels: ['2010','2011','2012','2013','2014','2015','2016','2017','2018'],
 				datasets: [{
 					fillColor: color,
 					strokeColor: 'rgba(0,0,0,0)',
-					data: [layer.feature.properties.Value2010,layer.feature.properties.Value2011,layer.feature.properties.Value2012,layer.feature.properties.Value2013,layer.feature.properties.Value2014,layer.feature.properties.Value2015]
+					data: [layer.feature.properties.Value2010,layer.feature.properties.Value2011,layer.feature.properties.Value2012,layer.feature.properties.Value2013,layer.feature.properties.Value2014,layer.feature.properties.Value2015,layer.feature.properties.Value2016,layer.feature.properties.Value2017,layer.feature.properties.Value2018]
 				}]
 			};
 		});
@@ -268,7 +270,7 @@ $(function() {
 		var $popup = $('.leaflet-popup');
 		var $popupHtml = '<div class="popup-container">' + $popup.html() + '</div>';
 		$popup.html($popupHtml);
-		generateChart(e.layer.feature.properties.Rank2015);
+		generateChart(e.layer.feature.properties.Rank2018);
 	}
 	function closePopup(e) {
 		/*$('.leaflet-popup').addClass('popupclose');
@@ -283,8 +285,9 @@ $(function() {
 	function generateChart(chartnr) {
 		ctx[chartnr] = $('#chart-'+chartnr).get(0).getContext("2d");
 		chart[chartnr] = new Chart(ctx[chartnr]);
-		//$('#chart-'+chartnr)[0].width = 180;
-		//$('#chart-'+chartnr)[0].height = 120;
+		//$('#chart-'+chartnr)[0].maintainAspectRatio = false;
+		//$('#chart-'+chartnr)[0].width = 250;
+		//$('#chart-'+chartnr)[0].height = 200;
 		chart[chartnr].HorizontalBar(chartData[chartnr],chartOptions[chartnr]);
 	}
 
